@@ -39,4 +39,4 @@ History of the game page: ![brief history](image-5.png)
 
 Quiz page: ![quiz](image.png)  
 
-Note: The footer for copyright purposes and the menu that will easily allow the user to go to the other webpages can be found in all webpages on the website.
+Note: The footer for copyright purposes, the website logo and the menu that will easily allow the user to go to the other webpages can be found in all webpages on the website.

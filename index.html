@@ -61,6 +61,13 @@
             margin-left: 90px;
             margin-right: 90px;
         }
+
+        .link {
+            color: inherit;
+            text-decoration: none;
+            display: inline-block;
+        }
+
         .info-box {
             width: 250px;
             background-color: rgb(59, 91, 59);
@@ -72,7 +79,13 @@
             src: url(assets/MinecraftFont.ttf) format('truetype');
             font-weight: normal;
             font-style: normal;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .link:hover .info-box {
+            transform: scale(1.1);
+        }
+
         .boxes-container {
             display: flex;
             justify-content: space-around;
@@ -128,23 +141,29 @@
         
         <p> This website aims to guide the new players of Minecraft on how they can progress deeper, accomplish quests, acquire items, explore worlds, and end the game. This serves as their guide to what things they should prioritze in order to finish the game. This website contains item guides, loot guides, map guides, mob guides, and the basic progression of the game. </p> <div>
         <p> Click on the buttons below to navigate through the game! </p>
-
+        
         <div class="boxes-container">
+        <a href="public/Overworld.html" class="link">
 
         <div class="info-box">
             <img src="assets/cobble.png" class="box-img">
             <p class="box-text1">The Overworld</p>
 
         </div>
+    </a>
 
+        <a href="public/Nether.html" class="link">
         <div class="info-box">
             <img src="assets/Netherrack.webp" class="box-img">
             <p class="box-text2">The Nether</p>
 
             </div>
-
+        </a>
+            
+        <a href="public/End.html" class="link">
         <div class="info-box">
             <img src="assets/Endstone.webp" class="box-img">
             <p class="box-text3">The End</p>
         </div>
+        </a>
         </div>

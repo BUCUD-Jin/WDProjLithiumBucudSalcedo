@@ -49,9 +49,41 @@
             transform: translateY(-50%);
         }
 
+        .navigation-area {
+            position: sticky;
+            top: 0;
+            background-color: rgb(86, 49, 49);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 12px 0;
+            border-bottom: 4px solid rgb(86, 49, 49);
+        }
+
+        .navigation-area a {
+            font-family: 'Minecraft';
+            src: url(assets/MinecraftFont.ttf) format('truetype');
+            font-weight: normal;
+            font-size: 16px;
+            color: rgb(102, 57, 57);
+            transition: 0.3 ease, color 0.3 ease;
+
+        }
+
+        .navigation-area a:hover {
+            transform: scale(1.1);
+        }
+
         </style>
 
-         <header>
+    <header>
         <img src="/assets/minecraft.png" class="header-icon header-rightside" style="height: 60px;">
         <h1 style="color:rgb(136, 104, 104)" > The Nether </h1>
     </header>
+
+     <nav class="navigation-area">
+        <a href="index.html">Homepage</a>
+        <a href="public/Overworld.html">Overworld</a>
+        <a href="public/End.html">End</a>
+        <a href="public/Quiz.html">Quiz</a>
+    </nav>

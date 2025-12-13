@@ -66,12 +66,12 @@
         .navigation-area {
             position: sticky;
             top: 0;
-            background-color: rgb(86, 49, 49);
+            background-color: rgb(155, 160, 118);
             display: flex;
             justify-content: center;
             gap: 40px;
             padding: 12px 0;
-            border-bottom: 4px solid rgb(86, 49, 49);
+            border-bottom: 4px solid rgb(155, 160, 118);
         }
 
         .navigation-area a {
@@ -79,7 +79,7 @@
             src: url(../assets/MinecraftFont.ttf) format('truetype');
             font-weight: normal;
             font-size: 16px;
-            color: rgb(136, 104, 104);
+            color: rgb(177, 182, 136);
             transition: 0.3 ease, color 0.3 ease;
 
         }
@@ -92,6 +92,58 @@
             font-family: 'Minecraft';
             src: url(../assets/MinecraftFont.ttf) format('truetype');
             margin: 0;
-            background-color: rgb(155, 160, 118)
+            background-color: rgb(122, 126, 93)
 
         }
+
+        .endportals {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+        }
+
+         .big-box {
+            color:rgb(155, 113, 163);
+            background-color: rgb(177, 182, 136);
+            margin: 60px auto;
+            padding: 40px;
+            height: 1170px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
+
+    <header>
+        <img src="../assets/minecraft.png" class="header-icon header-rightside" style="height: 60px;">
+        <h1 style="color:rgb(201, 206, 163)" > The End </h1>
+    </header>
+
+     <nav class="navigation-area">
+        <a href="../index.html">Homepage</a>
+        <a href="../public/Overworld.html">Overworld</a>
+        <a href="../public/Nether.html">Nether</a>
+        <a href="../public/History.html">History of Minecraft</a>
+        <a href="../public/Quiz.html">Quiz</a>
+    </nav>
+
+    <body>
+
+        <div class="big-box">
+            <h1 style="color: rgb(122, 92, 129)"> The End of the game? </h1>
+            <p style="margin-top: 30px;"> The End is one of Minecraft's 3 dimensions. This dimension is often considrered as the final one in the game since this is where the Ender Dragon fight takes place. Unlike the other 2 dimensions, the End is an almost lifeless and empty place filled with end islands surrounded by the dark void. Unlike the Nether, this dimension doesn't have any fog for its atmosphere. This dimension has the least amount of biomes and structures out of the 3 dimensions in the game. Your main goal here is to defeat the final boss of Minecraft, the Ender Dragon. </p>
+            <p> An image of the End Dimension, featuring the main End Island in the middle and the outer end islands: </p>
+             <img src="../assets/End.png" style = "text-align: center; width: 450px; height: auto; border-radius: 15px; margin-top: 30px;"> 
+             <p> The Ender Dragon, the game's final boss: </p>
+             <img src="../assets/EnderDragon.gif" style = "text-align: center; width: 320px; height: auto; border-radius: 15px; margin-top: 30px;"> 
+             <p> Similarly to the nether, you will need a portal to enter this dimension. Unlike the Nether portal however, the End portal cannot be built. Instead, you need to find an end portal inside a stronghold and activate it using eye-of-enders. </p>
+             <p> 2 images of an end portal (left: inactive, right: active): </p>
+             <div class="endportals">
+                <img src="../assets/Inactive.png" style = "text-align: center; width: 200px; height: auto; border-radius: 15px; margin-top: 30px;">
+                <img src="../assets/Active.png" style = "text-align: center; width: 200px; height: auto; border-radius: 15px; margin-top: 30px;"> 
+            </div>
+    </body>

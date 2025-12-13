@@ -85,7 +85,19 @@
             background-color: rgb(136, 104, 104);
             margin: 60px auto;
             padding: 40px;
-            height: 1050px;
+            height: 1080px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .big-box2 {
+            background-color: rgb(136, 104, 104);
+            margin: 60px auto;
+            padding: 40px;
+            height: 1200px;
             width: 1100px;
             border-radius: 15px;
             text-align: center;
@@ -94,11 +106,17 @@
             flex-direction: column;
         }
 
-        .big-box + .big-box {
+        .big-box + .big-box2 {
             margin-top: 110px;
         }
 
         .fortress {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+        }
+
+        .bastion {
             display: flex;
             justify-content: center;
             gap: 45px;
@@ -119,6 +137,8 @@
     </nav>
 
     <div class="big-box">
+
+        <h1 style="color: rgb(73, 40, 40)"> An intro to the nether </h1>
         <p> Welcome to the Nether. The Nether is one of Minecraft's 3 dimensions which you'll encounter when trying to beat the game. </p>
         <p> Unlike the Overworld, which looks relatively normal and peaceful, the Nether is a dimension filled with molten hot lava and dangerous creatures. The ominous atmosphere in this dimension is filled with danger and you should always keep your guard up while venturing this dimension. </p> 
         <p> An image of the Nether: </p>
@@ -126,17 +146,31 @@
         <p> But first, how exactly do you get in the Nether? o access this dimension, you'll need 10 obsidian and a flint and steel. Once you've gathered the materials, start building the Nether portal. You may use the image below as a guide when making the nether portal </p> 
         <p> An image of a simple nether portal </p>
         <img src="../assets/NetherPortal.webp" style = "text-align: center;" div>
+
     </div>
 
-    <div class="big-box">
+    <div class="big-box2">
+
+        <h1 style="color: rgb(73, 40, 40)"> The Structures </h1>
         <p> Just like the Overworld, the Nether contains lots of unique structures. Most structures are very useful for your progression but some are not.  </p>
-        <p> One of the Nether's most popular and important structures is the Nether Fortress. Nether Fortresses are large fortress/castle-like buildings which are made up of red nether bricks. In these fortresses, you will encounter lots of hostile mobs such as wither skeletons, blazes and more. One of this structure's most useful features are the blaze spawneres, which you can use to gather blaze rods which can be used to make potions and eye of enders, which is one of the materials needed to open the end portal. </p>
+        <p> One of the Nether's most popular and important structures is the Nether Fortress. Nether Fortresses are large fortresslike buildings which are made up of red nether bricks. In these fortresses, you will encounter lots of hostile mobs such as wither skeletons, blazes and more. One of this structure's most useful features are the blaze spawneres, which you can use to gather blaze rods which can be used to make potions and eye of enders, which is one of the materials needed to open the end portal. </p>
         <p> An image of some of the Nether Fortress' areas: </p>
         <div class="fortress">
-        <img src="../assets/Fortress1.webp" style = "text-align: center; width: 200px; height: auto;"> 
-        <img src="../assets/Fortress2.webp" style = "text-align: center; width: 200px; height: auto;">
-        <img src="../assets/Fortress3.webp" style = "text-align: center; width: 200px; height: auto;">
-        <img src="../assets/Fortress4.webp" style = "text-align: center; width: 200px; height: auto;">
-        </div>
-        <p> test </p>
+           <img src="../assets/Fortress1.webp" style = "text-align: center; width: 200px; height: auto;"> 
+           <img src="../assets/Fortress2.webp" style = "text-align: center; width: 200px; height: auto;">
+           <img src="../assets/Fortress3.webp" style = "text-align: center; width: 200px; height: auto;">
+           <img src="../assets/Fortress4.webp" style = "text-align: center; width: 200px; height: auto;">
 
+           </div>
+
+        <p> Another useful structure in the nether is the bastion remnant. Bastion remnants are gray ruined castle-like buildings which are guarded by piglins and piglin brutes. There are 4 types of Bastion Remnants, all containing loot inside them. This structure is important since this is where you can get netherite upgrade templates, a material used to upgrade your armor to netherite.  </p>
+        <p> An image of the 4 types of bastion remnants. </p>
+        <div class="bastion">
+            <img src="../assets/Bastion1.png" style = "text-align: center; width: 200px; height: auto;">
+            <img src="../assets/Bastion2.png" style = "text-align: center; width: 200px; height: auto;">
+            <img src="../assets/Bastion3.png" style = "text-align: center; width: 200px; height: auto;">
+            <img src="../assets/Bastion4.png" style = "text-align: center; width: 200px; height: auto;">
+
+            </div>
+
+        <p> A small structure that can be found in the Nether is the ruined portal. </p>

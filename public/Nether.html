@@ -6,12 +6,12 @@
     <meta name="description" content="2Q 1st Graded Exercise">
     <meta name="keywords" content="WDProjLithiumBucudSalcedo">
     <meta name="BucudSalcedo" content="Nether">
-    <link rel="icon" href="/assets/minecraft.png"  type="img/png">
+    <link rel="icon" href="../assets/minecraft.png"  type="img/png">
     <link rel="stylesheet" href="style.css">
    <style>
         @font-face {
             font-family: 'Minecraft';
-            src: url(/assets/MinecraftFont.ttf) format('truetype');
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
         }
     </style>
     <style>
@@ -19,7 +19,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Minecraft';
-            src: url(/assets/MinecraftFont.ttf) format('truetype');
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -62,10 +62,10 @@
 
         .navigation-area a {
             font-family: 'Minecraft';
-            src: url(/assets/MinecraftFont.ttf) format('truetype');
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
             font-weight: normal;
             font-size: 16px;
-            color: rgb(102, 57, 57);
+            color: rgb(136, 104, 104);
             transition: 0.3 ease, color 0.3 ease;
 
         }
@@ -76,15 +76,28 @@
 
         body {
             font-family: 'Minecraft';
-            src: url(/assets/MinecraftFont.ttf) format('truetype');
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
             margin: 0;
             background-color: rgb(73, 40, 40)
+        }
+
+        .big-box {
+            background-color: rgb(136, 104, 104);
+            margin: 60px auto;
+            padding: 40px;
+            height: 2000px;
+            width: 1100px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.058);
         }
 
         </style>
 
     <header>
-        <img src="/assets/minecraft.png" class="header-icon header-rightside" style="height: 60px;">
+        <img src="../assets/minecraft.png" class="header-icon header-rightside" style="height: 60px;">
         <h1 style="color:rgb(136, 104, 104)" > The Nether </h1>
     </header>
 
@@ -94,3 +107,6 @@
         <a href="../public/End.html">End</a>
         <a href="../public/Quiz.html">Quiz</a>
     </nav>
+
+    <div class="big-box">
+        <p> test </p>

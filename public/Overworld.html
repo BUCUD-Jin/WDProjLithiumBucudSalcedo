@@ -96,6 +96,59 @@
             color:rgb(66, 112, 69);
         }
 
+        .villagerow {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 60px auto;
+        }
+
+        .villagebox {
+            background-color: rgb(136, 115, 91);
+            border-radius: 15px;
+            width: 320px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .village img {
+            width: 200px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+         .guardianrow {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 60px auto;
+        }
+
+        .guardianbox {
+            background-color: rgb(136, 115, 91);
+            border-radius: 15px;
+            width: 320px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-right: 30px;
+        }
+
+        .guardian img {
+            width: 200px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
         .overworldrow {
             display: flex;
             justify-content: center;
@@ -140,7 +193,85 @@
             background-color: rgb(136, 115, 91);
             margin: 60px auto;
             padding: 40px;
-            height: 130px;
+            height: 600px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .big-box3 {
+            background-color: rgb(136, 115, 91);
+            margin: 60px auto;
+            padding: 40px;
+            height: 500px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .big-box4 {
+            background-color: rgb(136, 115, 91);
+            margin: 60px auto;
+            padding: 40px;
+            height: 1000px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .big-box5 {
+            background-color: rgb(136, 115, 91);
+            margin: 60px auto;
+            padding: 40px;
+            height: 620px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .big-box6 {
+            background-color: rgb(136, 115, 91);
+            margin: 60px auto;
+            padding: 40px;
+            height: 500px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .big-box7 {
+            background-color: rgb(136, 115, 91);
+            margin: 60px auto;
+            padding: 40px;
+            height: 500px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .big-box8 {
+            background-color: rgb(136, 115, 91);
+            margin: 60px auto;
+            padding: 40px;
+            height: 500px;
             width: 1100px;
             border-radius: 15px;
             text-align: center;
@@ -150,7 +281,7 @@
         }
 
 
-        .big-box + .big-box2 + .big-box3 + .big-box4 {
+        .big-box + .big-box2 + .big-box3 + .big-box4 + .big-box5 + .big-box6 + .big-box7 + .big-box8 {
             margin-top: 110px;
         }
 
@@ -201,9 +332,102 @@
         </div>
 
         <div class="big-box2">
-            <h1 style="color: rgb(98, 161, 102)"> An intro to the overworld </h1>
+            <h1 style="color: rgb(98, 161, 102)"> The Structures </h1>
+            <p style="margin-top: 30px;">Since the overworld contains so many structures, we'll only going to cover the essential ones </p>
+            <h2 style="color: rgb(94, 89, 49)"> The Village </h2>
+            <p> Villages are structures composed of multiple houses and buildings inhabited by villagers, cats, livestock and an iron golem which serves as the village's guard. Villages provide food, shelter and resources via chests and trading, which makes it one of the best structures in the overworld. The appearance of the buildings in a village can differ depending on what biome the village is in. </p>
+            <p> An image of a village: </p>
+            <img src="../assets/VILLAGE.jpg" style = "text-align: center; width: 420px; height: auto; border-radius: 15px; margin-top: 30px;">
+            <p style="margin: 30px;"> As stated earlier, the build-style of a village will change based on the biome where the village is at. Here's some images of a simple village house in 3 different biomes </p>
 
+        </div>
 
+            <div class="villagerow">
 
+                <div class="villagebox">
+                    <img style="width: 200px;" src="../assets/plains.png">
+                    <h2> A plains village house </h2>
+                </div>
+
+                <div class="villagebox">
+                    <img style="width: 150px;" src="../assets/desert.png">
+                    <h2> A desert village house </h2>
+                </div>
+
+                <div class="villagebox">
+                    <img style="width: 200px;" src="../assets/taiga.png">
+                    <h2> A taiga village house </h2>
+                </div>
+            
+            </div>
+
+        <div class="big-box3">
+
+            <h2 style="color: rgb(208, 190, 70)"> The Desert Temple </h2>
+            <p> The desert temple is an almost pyramid-like structure made up of sandstone. Beneath the temple contains 4 chests and a not so hidden trap. The chests contain lots of loot and even an enchanted golden apple if you're lucky. To avoid the trap, avoid hitting the stone pressure plate once you descend in the temple. </p>
+            <p> An image of the desert temple </p>
+            <img src="../assets/Pyramid.png" style = "text-align: center; width: 420px; height: auto; border-radius: 15px; margin-top: 30px;">
+
+        </div>
+
+        <div class="big-box4">
+
+            <h2 style="color: rgb(102, 126, 107)"> The Jungle Temple </h2>
+            <p> The jungle temple is a square temple-like structure made up of cobblestone and mossy cobblestone. This temple can only be found in jungle biomes. Inside the temple contains a puzzle consisting of 3 levers. If the combination of levers is inputted correctly, you will be rewarded with a chest. Similarly to the desert temple, the jungle temple contains a trap. The trap here revolves around tripwires which are connected to dispensers that shoot arrows. If you want to successfully loot this structure, break the tripwires when you spot them in the ground. </p>
+            <p> An image of the jungle temple: </p>
+            <img src="../assets/jungletemple.png" style = "text-align: center; width: 420px; height: auto; border-radius: 15px; margin-top: 30px;">
+            <p> An image of the jungle temple puzzle: </p>
+            <img src="../assets/junglepuzzle.png" style = "text-align: center; width: 420px; height: auto; border-radius: 15px; margin-top: 30px;">
+
+        </div>
+
+        <div class="big-box5">
+
+            <h2 style="color: rgb(74, 62, 52)"> The Woodland Mansion </h2>
+            <p> One of Minecraft's largest structures, the woodland mansion is a massive mansion that can be found only in pale gardens and dark forests. The mobs that inhabit this mansion are vindicators, evokers and allays. The mansion contains 3 floors, all of which have different rooms. </p>
+            <p> An image of the woodland mansion: </p>
+            <img src="../assets/WoodlandMansion.png" style = "text-align: center; width: 420px; height: auto; border-radius: 15px; margin-top: 30px;">
+
+        </div>
+
+        <div class="big-box6">
+
+             <h2 style="color: rgb(52, 75, 86)"> The Shipwreck </h2>
+             <p> The shipwreck is a structure which can be found underwater in ocean biomes. The structure resembles a sunken and half-destroyerd ship. Inside the structure contains some chests. Sometimes, these chests contain maps which lead to buried treasure. </p>
+             <p> An image of a shipwreck: </p>
+            <img src="../assets/Shipwreck.webp" style = "text-align: center; width: 420px; height: auto; border-radius: 15px; margin-top: 30px;">
+
+        </div>
+
+        <div class="big-box7">
+
+            <h2 style="color: rgb(90, 84, 130)"> The Ocean Monument </h2>
+            <p> Ocean monuments are massive underwater structures made up of prismarine blocks and guarded by guardians and an elder guardian. They can be rarely found in ocean biomes. </p>
+            <p> An image of an ocean monument: </p>
+            <img src="../assets/OceanMonu.webp" style = "text-align: center; width: 420px; height: auto; border-radius: 15px; margin-top: 30px;">
+
+        </div>
+
+        <div class="guardianrow">
+
+            <div class="guardianbox">
+                <img style="width: 200px;" src="../assets/Elder.gif">
+                <h2> The Elder Guardian, the main boss of the ocean monument. </h2>
+            </div>
+
+            <div class="guardianbox">
+                <img style="width: 200px;" src="../assets/Guardian.gif">
+                <h2> The Guardian, mobs that guard the ocean monument. </h2>
+            </div>
+
+        </div>
+
+        <div class="big.box8">
+
+            <h2 style="color: rgb(128, 128, 128)"> The Stronghold </h2>
+
+        </div>
+
+    </body>
 
     </div>

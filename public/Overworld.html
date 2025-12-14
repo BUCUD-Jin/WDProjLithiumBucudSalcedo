@@ -96,12 +96,38 @@
             color:rgb(66, 112, 69);
         }
 
+        .overworldrow {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 60px auto;
+        }
+
+        .box {
+            background-color: rgb(136, 115, 91);
+            border-radius: 15px;
+            width: 320px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box img {
+            width: 250px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
         
         .big-box {
             background-color: rgb(136, 115, 91);
             margin: 60px auto;
             padding: 40px;
-            height: 1080px;
+            height: 130px;
             width: 1100px;
             border-radius: 15px;
             text-align: center;
@@ -109,6 +135,20 @@
             display: flex;
             flex-direction: column;
         }
+
+        .big-box2 {
+            background-color: rgb(136, 115, 91);
+            margin: 60px auto;
+            padding: 40px;
+            height: 130px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
 
         .big-box + .big-box2 + .big-box3 + .big-box4 {
             margin-top: 110px;
@@ -131,9 +171,39 @@
 
     <body>
 
-         <div class="big-box">
+        <div class="big-box">
 
-        <h1 style="color: rgb(98, 161, 102)"> An intro to the overworld </h1>
-        <p> test </p>
+            <h1 style="color: rgb(98, 161, 102)"> An intro to the overworld </h1>
+            <p> The overworld is the first dimension you'll step foot in a Minecraft world. The overworld is filled with land, oceans and caves. Throughout the overworld, the biomes are filled with different mobs and plants that give the overworld more life. The overworld is the only dimension that follows a day and night cycle. Out of all 3 Minecraft dimensions, overworld is also the most similar dimension to real life. </p>
+        </div>
+
+        <div class="overworldrow">
+
+            <div class="box">
+
+                <img src="../assets/Mountain.png">
+                <h2 style="color:rgb(98, 161, 102)"> The Land </h2>
+                <p> The overworld's land features mountains, plains, forests and caves, all inhabited by passive and hostile mobs. </p>
+            </div>
+
+            <div class="box">
+
+                <img src="../assets/Coral.png">
+                <h2 style="color:rgb(98, 161, 102)">The Oceans </h2>
+                <p> The overworld features many bodies of water filled with aquatic life. Venture through the structures in the waters to get some loot for your Minecraft journey. </p>
+            </div>
+
+            <div class="box">
+                <img src="../assets/Sky.png">
+                <h2 style="color:rgb(98, 161, 102)"> The Skies </h2>
+                <p> The sky follows a day-night cycle. The sky also features the phantom, a hostile mob that spawns when you don't get enough sleep. </p>
+            </div>
+        </div>
+
+        <div class="big-box2">
+            <h1 style="color: rgb(98, 161, 102)"> An intro to the overworld </h1>
+
+
+
 
     </div>

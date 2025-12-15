@@ -100,7 +100,7 @@
             background-color: rgb(200, 152, 234);
             margin: 60px auto;
             padding: 40px;
-            height: 1080px;
+            height: 90px;
             width: 1100px;
             border-radius: 15px;
             text-align: center;
@@ -108,6 +108,20 @@
             display: flex;
             flex-direction: column;
         }
+
+        .big-box2 {
+            background-color: rgb(200, 152, 234);
+            margin: 60px auto;
+            padding: 40px;
+            height: 900px;
+            width: 1100px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
 
         </style>
 
@@ -128,7 +142,21 @@
 
         <div class="big-box">
 
-            <h2> placeholder </h2>
+            <h2> Welcome player! After reading some of this website's pages, test your knowledge by taking this short quiz and finding out how much you've learned! </h2>
+
+        </div>
+
+        <div class="big-box2">
+
+            <div id="quizcontent">
+
+                <p id="question"> </p>
+                <div id="choices"> </div>
+                <button id="next"> Next </button>
+
+            </div>
+
+            <p id="score"> </p>
 
         </div>
     
@@ -136,9 +164,87 @@
 
         const quiz = [
             {
-                question1: "Out of all 3 dimensions in Minecraft, which is the only one that follows a day-night cycle?"
+                question: "Out of all 3 dimensions in Minecraft, which is the only one that follows a day-night cycle?",
+                choices: ["End", "Overworld", "Nether", "None of the Given"],
+                answer: "Overworld"
+            },
+
+            {
+                question: "Which of these structures CANNOT be found in the nether?",
+                choices: ["Bastion Remnant", "Fossil", "Ruined Portal", "Stronghold"],
+                answer: "Stronghold"
+            },
+
+            {
+                question: "Which mob can be found in a woodland mansion?",
+                choices: ["Vindicator", "Pillager", "Chillager", "Copper Golem"],
+                answer: "Vindicator"
+            },
+
+            {
+                question: "What is the only way to obtain an elytra in survival mode?",
+                choices: ["Finding it in a shipwreck", "Finding it in an end ship", "Defeating phantoms until it drops the elytra", "Finding it in a chest in a nether fortress"],
+                answer: "Finding it in an end ship"
+            },
+
+            {
+                question: "When preparing for the ender dragon fight, which of these items is not essential?",
+                choices: ["Weapons", "Water Bucket", "Iron Blocks", "Bow and Arrow"],
+                answer: "Iron Blocks"
+            },
+
+            {
+                question: "Which of these mobs can be found in the skies?",
+                choices: ["Phantom", "Strider", "Drowned", "Iron Golem"],
+                answer: "Phantom"
+            },
+        ];
+
+        let Score = 0;
+        let CurrentQuestion = 0;
+
+        const QuestionText = document.getElementById("question");
+        const QuizChoices = document.getElementById("choices");
+        const YourScore = document.getElementById("score");
+        const NextQuestion = document.getElementById("next");
+
+        function NewQuestion() {
+            const CurrentQuizQuestion = quiz[CurrentQuestion];
+            QuestionText.textContent = CurrentQuizQuestion.question;
+            QuizChoices.innerHTML = "";
+            CurrentQuizQuestion.choices.forEach(option => {
+                const button = document.createElement("button");
+                button.onclick = () => SelectAnOption(option);
+                button.textContent = option;
+                button.classList.add("option-button");
+                QuizChoices.appendChild(button);
             }
-        ]
+        );
+        }
+
+        function SelectAnOption(selected) {
+            const CorrectAnswer = quiz[CurrentQuestion].answer;
+            if (selected == CorrectAnswer) {
+                Score++;
+            }
+
+        CurrentQuestion++
+
+        if (CurrentQuestion < quiz.length) {
+            NewQuestion();
+        } else {
+           ShowScore();
+        }
+
+        }
+
+        function ShowScore() {
+            quizcontent.innerHTML = `<h2> Congratulations! You got a score of ${Score} out of ${quiz.length} </h2>`;
+        }
+
+        NewQuestion();
+
+
 
     </script>
 

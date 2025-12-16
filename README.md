@@ -3,7 +3,7 @@ Website title: "An Adventure Map: Navigating Minecraft and It's Worlds."
 
 Website logo:  
 
-![Logo](minecraft.png)  
+![Logo][assets/minecraft.png]  
 
 This website aims to guide the new players of Minecraft on how they can progress deeper, accomplish quests, acquire items, explore worlds, and end the game. This serves as their guide to what things they should prioritze in order to finish the game. This website contains item guides, loot guides, map guides, mob guides, and the basuc progression of the game.  
 
@@ -25,18 +25,18 @@ Quiz page: This is one of the webpages. This webpage aims to test the viewer's k
 
 Wireframes:  
 
-Homepage: ![alt text](image-6.png)  
+Homepage: ![alt text](assets/image-6.png)  
 
-Overworld page: ![overworld](image-1.png)  
+Overworld page: ![overworld](assets/image-1.png)  
 
-Overworld page (when expanding the menu): ![menu expansion](image-2.png)
+Overworld page (when expanding the menu): ![menu expansion](assets/image-2.png)
 
-Nether page: ![nether](image-3.png)  
+Nether page: ![nether](assets/image-3.png)  
 
-End page: ![end](image-4.png)  
+End page: ![end](assets/image-4.png)  
 
-History of the game page: ![brief history](image-5.png)  
+History of the game page: ![brief history](assets/image-5.png)  
 
-Quiz page: ![quiz](image.png)  
+Quiz page: ![quiz](assets/image.png)  
 
 Note: The footer for copyright purposes, the website logo and the menu that will easily allow the user to go to the other webpages can be found in all webpages on the website.

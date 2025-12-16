@@ -3,7 +3,7 @@ Website title: "An Adventure Map: Navigating Minecraft and It's Worlds."
 
 Website logo:  
 
-![Logo][assets/minecraft.png]  
+[Logo](assets/minecraft.png)  
 
 This website aims to guide the new players of Minecraft on how they can progress deeper, accomplish quests, acquire items, explore worlds, and end the game. This serves as their guide to what things they should prioritze in order to finish the game. This website contains item guides, loot guides, map guides, mob guides, and the basuc progression of the game.  
 

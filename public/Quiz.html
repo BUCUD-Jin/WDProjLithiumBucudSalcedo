@@ -243,6 +243,30 @@
             },
 
             {
+                question: "Which of these structures feature a hidden trap meant to damage the player?",
+                choices: ["End City", "Ruined Portal", "Desert Temple", "End Fortres"],
+                answer: "Desert Temple"
+            },
+
+            {
+                question: "Who is the original creator of Minecraft?",
+                choices: ["Jens Bergesten", "Cali Maki", "Notch Persson", "Mojang"],
+                answer: "Notch Persson"
+            },
+
+            {
+                question: "The only way to access the end dimension is by finding a portal hidden inside a nether fortress",
+                choices: ["True", "False"],
+                answer: "False"
+            },
+
+            {
+                question: "There are currently 4 dimensions in Minecraft",
+                choices: ["True", "False"],
+                answer: "False"
+            },
+
+            {
                 question: "Soul sand will increase your walkspeed",
                 choices: ["True", "False"],
                 answer: "False"
@@ -287,7 +311,7 @@
 
         }
 
-        function ShowScore() {
+        function ShowScore() { // This will show the user's score after they are done with the quiz.
             quizcontent.innerHTML = `<h2> Congratulations! You got a score of ${Score} out of ${quiz.length} </h2>`;
         }
 

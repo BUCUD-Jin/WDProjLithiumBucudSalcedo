@@ -122,7 +122,7 @@
             flex-direction: column;
         }
 
-        .option-button {
+        .option-button { /* This will add decorations to the option buttons*/
             font-family: 'Minecraft';
             src: url(../assets/MinecraftFont.ttf) format('truetype');
             color: rgb(200, 152, 234);
@@ -183,9 +183,9 @@
 
         const quiz = [ // This will contain the quiz's questions, choices and answers.
             {
-                question: "Out of all 3 dimensions in Minecraft, which is the only one that follows a day-night cycle?",
-                choices: ["End", "Overworld", "Nether", "None of the Given"],
-                answer: "Overworld"
+                question: "Out of all 3 dimensions in Minecraft, which is the only one that follows a day-night cycle?", // A question for the quiz.
+                choices: ["End", "Overworld", "Nether", "None of the Given"],  // The options the user can pick from.
+                answer: "Overworld" // The answer to the question.
             },
 
             {
@@ -250,20 +250,19 @@
 
         ];
 
-        let Score = 0;
-        let CurrentQuestion = 0;
+        let Score = 0; // This will count the user's current score.
+        let CurrentQuestion = 0; // This will keep track on which question the user is at.
 
         const QuestionText = document.getElementById("question");
         const QuizChoices = document.getElementById("choices");
         const YourScore = document.getElementById("score");
-        const NextQuestion = document.getElementById("next");
 
-        function NewQuestion() {
+        function NewQuestion() { // This will load a new question.
             const CurrentQuizQuestion = quiz[CurrentQuestion];
-            QuestionText.textContent = CurrentQuizQuestion.question;
-            QuizChoices.innerHTML = "";
+            QuestionText.textContent = CurrentQuizQuestion.question; // This will display the text on the website.
+            QuizChoices.innerHTML = ""; // This will clear the previous answer choices.
             CurrentQuizQuestion.choices.forEach(option => {
-                const button = document.createElement("button");
+                const button = document.createElement("button"); // This will create clickable buttons for the quiz's options.
                 button.onclick = () => SelectAnOption(option);
                 button.textContent = option;
                 button.classList.add("option-button");
@@ -272,15 +271,15 @@
         );
         }
 
-        function SelectAnOption(selected) {
+        function SelectAnOption(selected) { // If the user selects an option, this function will run.
             const CorrectAnswer = quiz[CurrentQuestion].answer;
             if (selected == CorrectAnswer) {
                 Score++;
             }
 
-        CurrentQuestion++
+        CurrentQuestion++ // This allows the website to show the next question.
 
-        if (CurrentQuestion < quiz.length) {
+        if (CurrentQuestion < quiz.length) { // This will check if there's still available questions. If there's no more questions, the website will show the user's final score.
             NewQuestion();
         } else {
            ShowScore();

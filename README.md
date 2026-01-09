@@ -59,17 +59,19 @@ Note: The footer for copyright purposes, the website logo and the menu that will
 
 Updated main webpage: ![main](assets/image-7.png)
 
-Wireframes for sign-up page: 
+### Wireframes for sign-up page
 
  Username and password:![1](assets/image-8.png)
 
  Additional info utilizing dropdown boxesa and check boxes: ![2](assets/image-9.png) ![3](assets/image-10.png)
 
-Wireframes for login page:
+### Wireframes for login page
 
  placeholder text :D
 
-Wireframes for profile page: ![profile](assets/image-11.png)
+### Wireframes for profile page
+
+ ![profile](assets/image-11.png)
 
  
 

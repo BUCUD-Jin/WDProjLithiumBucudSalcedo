@@ -40,3 +40,36 @@ History of the game page: ![brief history](assets/image-5.png)
 Quiz page: ![quiz](assets/image.png)  
 
 Note: The footer for copyright purposes, the website logo and the menu that will easily allow the user to go to the other webpages can be found in all webpages on the website.
+
+# Q3 Updated Proposal
+
+## Design and narrative on the HTML form and webpages:
+
+ For our updated website, we have decided to include 3 new webpages. The most important webpage here is the sign-up page. This webpage allows the user to create a profile by asking for various information with the use of dropdown boxes and check boxes. The information asked from the user are their username, password and other interesting Minecraft facts about them (such as favorite biome, playstyle, etc.). After the user fillsi in the required data in the sign-up page, the data will get saved on the user's computer using local storage.
+
+ The data obtained from the sign-up page will be used in our other new webpages, which are the login and player profile pages.
+
+ In the login page, the user is able to login to their account by inputting the password and username which were saved in the sign-up page. The user will be able to access the player profile page ONLY if they have successfully logged in. 
+
+ The profile page is divided into 2 sections. The first one shows the user's username and profile picture. The other section shows the user the data which about the other interesting Minecraft facts about them they've inputted in the sign-up page such as their favorite dimension, skills and more.
+
+ Note: The player can actually choose their profile picture in the profile page, not in the sign-up page.
+
+## Wireframes
+
+Updated main webpage: ![main](assets/image-7.png)
+
+Wireframes for sign-up page: 
+
+ Username and password:![1](assets/image-8.png)
+
+ Additional info utilizing dropdown boxesa and check boxes: ![2](assets/image-9.png) ![3](assets/image-10.png)
+
+Wireframes for login page:
+
+ placeholder text :D
+
+Wireframes for profile page: ![profile](assets/image-11.png)
+
+ 
+

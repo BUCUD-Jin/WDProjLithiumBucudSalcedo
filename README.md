@@ -45,7 +45,7 @@ Note: The footer for copyright purposes, the website logo and the menu that will
 
 ## Design and narrative on the HTML form and webpages:
 
- For our updated website, we have decided to include 3 new webpages. The most important webpage here is the sign-up page. This webpage allows the user to create a profile by asking for various information with the use of dropdown boxes and check boxes. The information asked from the user are their username, password and other interesting Minecraft facts about them (such as favorite biome, playstyle, etc.). After the user fillsi in the required data in the sign-up page, the data will get saved on the user's computer using local storage.
+ For our updated website, we have decided to include 3 new webpages. The most important webpage here is the sign-up page. This webpage allows the user to create a profile by asking for various information with the use of dropdown boxes and check boxes. The information asked from the user are their username, password and other interesting Minecraft facts about them (such as favorite biome, playstyle, etc.). After the user fills in the required data in the sign-up page, the data will get saved on the user's computer using local storage. The main purpose of the HTML form in our website is to store content from the user and display it on other webpages on our website.
 
  The data obtained from the sign-up page will be used in our other new webpages, which are the login and player profile pages.
 

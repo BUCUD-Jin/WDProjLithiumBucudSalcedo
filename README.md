@@ -73,7 +73,7 @@ This shows an updated version of the website's main homepage, which adds the sig
 
  ![login](assets/image-12.png)
 
- This is similar to the sign-up webpage. We added a section which contains images of the creators of the website and a button showing terms and consent.
+ This is similar to the sign-up webpage. We added a section which contains images of the creators of the website and a button showing terms and consent. If the player doesn't have an account yet, they can click the text that says "Don't have an account yet? Sign up here!" and they'll be redirected to the sign-up page.
 
 ### Wireframes for profile page
 

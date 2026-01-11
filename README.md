@@ -67,7 +67,7 @@ Updated main webpage: ![main](assets/image-7.png)
 
 ### Wireframes for login page
 
- placeholder text :D
+ ![login](assets/image-12.png)
 
 ### Wireframes for profile page
 

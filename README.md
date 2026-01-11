@@ -59,19 +59,27 @@ Note: The footer for copyright purposes, the website logo and the menu that will
 
 Updated main webpage: ![main](assets/image-7.png)
 
+This shows an updated version of the website's main homepage, which adds the sign-up page.
+
 ### Wireframes for sign-up page
 
  Username and password:![1](assets/image-8.png)
 
- Additional info utilizing dropdown boxesa and check boxes: ![2](assets/image-9.png) ![3](assets/image-10.png)
+ Additional info: ![2](assets/image-9.png) ![3](assets/image-10.png)
+
+ This utilizes dropdown boxes and checkboxes, as mentioned earlier.
 
 ### Wireframes for login page
 
  ![login](assets/image-12.png)
 
+ This is similar to the sign-up webpage. We added a section which contains images of the creators of the website and a button showing terms and consent.
+
 ### Wireframes for profile page
 
  ![profile](assets/image-11.png)
+
+ This shows what we stated earlier. The webpage is divided into 2 parts. One part shows your username and profile picture, while the other part shows additional Minecraft info about you.
 
  
 

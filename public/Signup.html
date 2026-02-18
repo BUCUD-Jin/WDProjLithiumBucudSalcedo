@@ -158,12 +158,56 @@
             padding: 5px;
         }
 
+        .big-box2 select {
+            width: 80%;
+            margin: 10px auto;
+            text-align: center;
+            background-color: rgb(101, 148, 101);
+            border: 1px solid rgb(120, 182, 120);
+            font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         .big-box2 input::placeholder {
-            color:rgb(0, 0, 0);
+            color:rgb(59, 91, 59);
             font-size: 10px;
             text-align: center;
             text-align: fixed;
         }
+
+        .bog-box2 select option{
+            background-color: rgb(72, 111, 72);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 90%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .checkbox-grid label {
+             background-color: rgb(59, 91, 59);
+            padding: 8px;
+            border: 1px solid rgb(120, 182, 120);
+            color: rgb(120, 182, 120);
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            cursor: pointer;
+
+        }
+
+        .checkbox-grid input[type="checkbox"] {
+            width: 20%;
+            margin-bottom: 5px;
+        }
+
         </style>
         <header>
              <img src="../assets/minecraft.png" class="header-icon header-rightside" style="height: 60px;">
@@ -198,13 +242,28 @@
             <input type="email" id="email" placeholder="Email" required>
             <p> Password: </p>
             <input type="password" id="password" placeholder="Password" required>
-        </div>
+
+        <h3 style="color:rgb(120, 182, 120)"> What is your favorite dimension? </h3>
 
         <select id="dimension">
-            <h1> What is your favorite dimension? </h1>
             <option value="Overworld">Overworld</option>
-            <option value="Overworld">Nether</option>
-            <option value="Overworld">Nether</option>
+            <option value="Nether">Nether</option>
+            <option value="End">End</option>
         </select>
+
+        <h3 style="color: rgb(120, 182, 120)"> What are your interests? </h3>
+
+        <div class="checkbox-grid">
+
+        <label> <input type="checkbox" name="interest" value="Building"> Building</label>
+        <label> <input type="checkbox" name="interest" value="Redstone"> Redstone</label>
+        <label> <input type="checkbox" name="interest" value="PVP"> PVP</label>
+        <label> <input type="checkbox" name="interest" value="Survival"> Survival/Hardcore</label>
+        <label> <input type="checkbox" name="interest" value="Multiplayer"> Multiplayer Games </label>
+        <label> <input type="checkbox" name="interest" value="Mods"> Mods</label>
+        <label> <input type="checkbox" name="interest" value="Content"> Content Creation</label>
+        <label> <input type="checkbox" name="interest" value="Map"> Map Making</label>
+
+
 
         </body>

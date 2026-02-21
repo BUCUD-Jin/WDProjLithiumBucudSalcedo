@@ -12,6 +12,20 @@ checkboxes.forEach((checkbox) => {
     theInterests.push(checkbox.value);
 });
 
+const players = JSON.parse(localStorage.getItem('minecraftPlayers')) || [];
+const doesUsernameExist = players.some(player => player.name === username);
+const doesEmailExist = players.some(player => player.email === email);
+
+if (doesUsernameExist) {
+    alert("This username is already taken");
+    return;
+}
+if (doesEmailExist) {
+    alert("This email address is already in use");
+    return;
+}
+
+
 const userData =  {
     name: username,
     email: email,
@@ -19,6 +33,10 @@ const userData =  {
     favoriteDimension: dimension,
     interests: theInterests
 };
+
+players.push(userData);
+localStorage.setItem('minecraftPlayers', JSON.stringify(players));
+localStorage.setItem('currentUser', JSON.stringify(userData));
 
 localStorage.setItem('minecraftUser', JSON.stringify(userData));
 alert("You've successfully created your account! Welcome " + username);

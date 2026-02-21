@@ -3,17 +3,16 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
 const inputtedUsername = document.getElementById('loginUsername').value;
 const inputtedPassword = document.getElementById('loginPassword').value;
-const savedData = JSON.parse(localStorage.getItem('minecraftUser'));
 
-if (!savedData) {
-    alert("Account not found");
-    return;
-}
+const players = JSON.parse(localStorage.getItem('minecraftPlayers')) || [];
+const foundPlayer = players.find(p => p.name === inputtedUsername && p.pass === inputtedPassword);
 
-if (inputtedUsername === savedData.name && inputtedPassword === savedData.pass) {
-    alert("Welcome, " + savedData.name);
+if (foundPlayer) {
+    localStorage.setItem('currentUser', JSON.stringify(foundPlayer));
+    alert("Welcome, " + foundPlayer.name);
     window.location.href = "Profile.html";
 } else {
     alert("Incorrect username or password");
 }
 });
+

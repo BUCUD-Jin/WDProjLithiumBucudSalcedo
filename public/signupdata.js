@@ -1,4 +1,4 @@
-document.querySelector('.createeacc').addEventListener('click', function(event) {
+document.querySelector('.createacc').addEventListener('click', function(event) {
     event.preventDefault();
 
 const username = document.getElementById('username').value;

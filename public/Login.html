@@ -8,3 +8,207 @@
     <meta name="BucudSalcedo" content="3rd Quarter Project">
     <link rel="icon" href="../assets/minecraft.png"  type="img/png">
     <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+        }
+    </style>
+    <style>
+        html, body, h1 {
+            margin: 0;
+            padding: 0;
+            font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        header { /* CSS for the header*/
+            background-color: rgb(213, 147, 114);
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 100px;
+            padding: 0 20px;
+        }
+
+        .header-icon {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-rightside {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        body {
+            background-color: rgb(175, 120, 93);
+            height: 1300px;
+            text-align: center;
+            }
+
+        .body {
+            padding-top: 40px;
+            font-size: 25px;
+            margin-left: 90px;
+            margin-right: 90px;
+        }
+
+        footer { /* CSS for the footer */
+            background-color: rgb(59, 91, 59);
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 230px;
+            margin-top: 35px;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+         .navigation-area {
+            position: sticky;
+            top: 0;
+            background-color: rgb(204, 141, 109);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 12px 0;
+            border-bottom: 4px solid rgb(204, 141, 109);
+        }
+
+        .navigation-area a {
+            font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+            font-weight: normal;
+            font-size: 16px;
+            color: rgb(160, 112, 88);
+            transition: 0.3 ease, color 0.3 ease;
+
+        }
+
+        .navigation-area a:hover {
+            transform: scale(1.1);
+        }
+
+
+        .link {
+            color: inherit;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+         body {
+            font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+            margin: 0;
+            background-color: rgb(175, 120, 93);
+            color:rgb(169, 116, 90);
+        }
+
+         .big-box {
+            background-color: rgb(137, 94, 73);
+            margin: 60px auto;
+            padding: 40px;
+            height: 420px;
+            width: 500px;
+            border-radius: 15px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #loginUsername, #loginPassword {
+            width: 80%;
+            padding: 10px;
+            margin: 15px auto;
+            background-color: rgb(196, 154, 133);
+            border: 2px solid rgb(175, 120, 93);
+            font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .big-box p {
+            color: rgb(216, 168, 144);
+            margin-bottom: 5px;
+
+        }
+
+        #loginUsername::placeholder, #loginPassword::placeholder {
+            color: rgb(137, 94, 73);
+            font-size: 12px;
+        }
+
+        .createacc {
+            background-color: rgb(216, 168, 144);
+            border: 2px solid rgb(137, 94, 73);
+            font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            height: 80px;
+            width: 300px;
+            border-radius: 20px;
+            margin: 25px auto;
+            font-size: 22px;
+            color: rgb(160, 112, 88);
+            cursor: pointer;
+        }
+
+        .createacc:hover {
+            transform: scale(1.15);
+        }
+
+        </style>
+        <header>
+             <img src="../assets/minecraft.png" class="header-icon header-rightside" style="height: 60px;">
+        <h1 style="color:rgb(216, 168, 144)" > Login </h1>
+        </header>
+
+        <nav class="navigation-area">
+        <a href="../index.html">Homepage</a>
+        <a href="../public/Overworld.html">Overworld</a>
+        <a href="../public/Nether.html">Nether</a>
+        <a href="../public/End.html">End</a>
+        <a href="../public/History.html">Who created Minecraft?</a>
+        <a href="../public/Quiz.html">Quiz</a>
+        <a href="../public/Signup.html">Signup</a>
+        <a href="../public/Profile.html">Profile</a>
+    </nav>
+
+    <body>
+
+        <div class="big-box">
+
+            <h1 style="color: rgb(192, 132, 102)"> Login to an existing account </h1>
+
+            <form id="loginForm">
+                <p> Username: </p>
+                <input type="text" id="loginUsername" placeholder="Enter Your Username" required>
+                <p> Password: </p>
+                <input type="password" id="loginPassword" placeholder="Enter Your Password" required>
+
+                <button type="submit" class="createacc">Explore your world</button>
+            </form>
+
+            <a href="Signup.html" style="text-decoration: none;" cursor="pointer;">
+            <h3 style="color: rgb(192, 132, 102)">Don't have an account yet? Sign up here</h3>
+            </a>
+        </div>

@@ -135,7 +135,7 @@
             background-color: rgb(72, 111, 72);
             margin: 60px auto;
             padding: 40px;
-            height: 1100px;
+            height: 750px;
             width: 500px;
             border-radius: 15px;
             text-align: center;
@@ -149,7 +149,7 @@
             margin: 10px auto;
             text-align: center;
             background-color: rgb(101, 148, 101);
-            border: 1px solid rgb(120, 182, 120);
+            border: 1px solid rgb(59, 91, 59);
             font-family: 'Minecraft';
             src: url(../assets/MinecraftFont.ttf) format('truetype');
             font-weight: normal;
@@ -168,6 +168,7 @@
             src: url(../assets/MinecraftFont.ttf) format('truetype');
             font-weight: normal;
             font-style: normal;
+            color: rgb(59, 91, 59);
         }
 
         .big-box2 input::placeholder {
@@ -175,10 +176,6 @@
             font-size: 10px;
             text-align: center;
             text-align: fixed;
-        }
-
-        .bog-box2 select option{
-            background-color: rgb(72, 111, 72);
         }
 
         .checkbox-grid {
@@ -206,6 +203,29 @@
         .checkbox-grid input[type="checkbox"] {
             width: 20%;
             margin-bottom: 5px;
+        }
+
+        .createacc {
+            background-color: rgb(120, 182, 120);
+            border-radius: 20px;
+            width: 75%;
+            margin: 20px auto;
+            padding: 15px;
+            border: 2px solid;
+            color: rgb(59, 91, 59);
+             font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            cursor: pointer;
+            align-items: center;
+
+
+        }
+
+        .createacc:hover {
+            transform: scale(1.1);
+
         }
 
         </style>
@@ -263,6 +283,11 @@
         <label> <input type="checkbox" name="interest" value="Mods"> Mods</label>
         <label> <input type="checkbox" name="interest" value="Content"> Content Creation</label>
         <label> <input type="checkbox" name="interest" value="Map"> Map Making</label>
+        <label> <input type="checkbox" name="interest" value="Map"> Speedrunning </label>
+        </div>
+
+        <button type="submit" class="createacc">Create Account</button>
+        </form>
 
 
 

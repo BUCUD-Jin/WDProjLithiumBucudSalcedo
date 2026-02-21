@@ -21,5 +21,7 @@ const userData =  {
 };
 
 localStorage.setItem('minecraftUser', JSON.stringify(userData));
+alert("You've successfully created your account! Welcome " + username);
+window.location.href = "Profile.html";
 
 });

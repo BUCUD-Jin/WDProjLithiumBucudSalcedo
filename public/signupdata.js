@@ -13,8 +13,8 @@ checkboxes.forEach((checkbox) => {
 });
 
 const players = JSON.parse(localStorage.getItem('minecraftPlayers')) || [];
-const doesUsernameExist = players.some(player => player.name === username.toLowerCase);
-const doesEmailExist = players.some(player => player.email === email.toLowerCase);
+const doesUsernameExist = players.some(player => player.name === username);
+const doesEmailExist = players.some(player => player.email === email);
 
 if (doesUsernameExist) {
     alert("This username is already taken");

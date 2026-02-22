@@ -8,7 +8,7 @@ const players = JSON.parse(localStorage.getItem('minecraftPlayers')) || [];
 const foundPlayer = players.find(p => p.name === inputtedUsername && p.pass === inputtedPassword);
 
 if (foundPlayer) {
-    localStorage.setItem('currentUser', JSON.stringify(foundPlayer));
+    localStorage.setItem('minecraftUser', JSON.stringify(foundPlayer));
     alert("Welcome, " + foundPlayer.name);
     window.location.href = "Profile.html";
 } else {

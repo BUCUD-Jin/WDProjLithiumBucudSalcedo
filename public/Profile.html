@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Player Profile">
+    <meta name="keywords" content="WDProjLithiumBucudSalcedo">
+    <meta name="BucudSalcedo" content="3rd Quarter Project">
+    <link rel="icon" href="../assets/minecraft.png" type="img/png">
+    <style>
+        @font-face {
+            font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --dark:      rgb(30, 47, 30);
+            --darker:    rgb(20, 32, 20);
+            --mid:       rgb(59, 91, 59);
+            --panel:     rgb(72, 111, 72);
+            --light:     rgb(98, 150, 98);
+            --bright:    rgb(120, 182, 120);
+            --highlight: rgb(160, 220, 160);
+            --muted:     rgb(101, 148, 101);
+            --text-dark: rgb(59, 91, 59);
+        }
+
+        html, body {
+            font-family: 'Minecraft', monospace;
+            font-weight: normal;
+            font-style: normal;
+            background-color: var(--light);
+            color: var(--bright);
+            min-height: 100vh;
+        }
+
+        body {
+            background-color: var(--light);
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(0,0,0,0.06) 32px),
+                repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(0,0,0,0.06) 32px);
+            background-size: 32px 32px;
+            animation: bgScroll 40s linear infinite;
+        }
+
+        @keyframes bgScroll {
+            from { background-position: 0 0; }
+            to   { background-position: 32px 32px; }
+        }
+
+        header {
+            background-color: var(--mid);
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0,0,0,0.08) 16px),
+                repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0,0,0,0.08) 16px);
+            background-size: 16px 16px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 100px;
+            padding: 0 20px;
+            border-bottom: 4px solid var(--dark);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        header h1 {
+            color: var(--bright);
+            font-size: 28px;
+            text-shadow: 3px 3px 0 var(--dark), -1px -1px 0 rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        .header-icon {
+            position: absolute;
+            top: 50%; right: 20px;
+            transform: translateY(-50%);
+            height: 60px;
+            image-rendering: pixelated;
+            filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.4));
+        }
+
+        .navigation-area {
+            position: sticky;
+            top: 0;
+            background-color: var(--darker);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 8px 10px;
+            border-bottom: 3px solid var(--dark);
+            z-index: 100;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+        }
+
+        .navigation-area a {
+            font-family: 'Minecraft', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 2px solid transparent;
+            transition: all 0.15s;
+        }
+
+        .navigation-area a:hover {
+            color: var(--bright);
+            border-color: var(--mid);
+            background-color: var(--mid);
+            transform: translateY(-2px);
+        }
+
+        .navigation-area a.active {
+            color: var(--highlight);
+            border-color: var(--bright);
+            background-color: var(--panel);
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 36px 20px 60px;
+        }
+
+        .mc-panel {
+            background-color: var(--panel);
+            border: 3px solid var(--dark);
+            border-radius: 4px;
+            box-shadow: 5px 5px 0 var(--dark), inset 0 1px 0 rgba(255,255,255,0.06);
+            overflow: hidden;
+        }
+
+        .mc-panel-header {
+            background: linear-gradient(90deg, var(--darker), var(--mid));
+            border-bottom: 3px solid var(--dark);
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mc-panel-header .label {
+            font-size: 10px;
+            color: var(--bright);
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 0 var(--dark);
+        }
+
+        .mc-panel-body { padding: 20px; }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--mid) 50%, var(--darker) 100%);
+            border: 3px solid var(--bright);
+            padding: 22px 36px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 5px 5px 0 var(--dark);
+            animation: fadeDown 0.5s ease both;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-banner h2 {
+            color: var(--highlight);
+            font-size: 18px;
+            text-shadow: 2px 2px 0 var(--dark);
+        }
+
+        .welcome-banner p {
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 8px;
+            line-height: 2;
+        }
+
+        .banner-icon {
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.5));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-8px); }
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 290px 1fr;
+            gap: 22px;
+            animation: fadeUp 0.5s ease 0.15s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .left-col  { display: flex; flex-direction: column; gap: 18px; }
+        .right-col { display: flex; flex-direction: column; gap: 18px; }
+
+        .avatar-section {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 12px;
+        }
+
+        .avatar-frame { position: relative; width: 128px; height: 128px; }
+
+        .avatar-box {
+            width: 128px; height: 128px;
+            background-color: var(--darker);
+            border: 4px solid var(--dark);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3.5rem;
+            cursor: pointer;
+            image-rendering: pixelated;
+            transition: border-color 0.2s, transform 0.2s;
+            box-shadow: inset -4px -4px 0 rgba(0,0,0,0.3), inset 4px 4px 0 rgba(255,255,255,0.05);
+        }
+
+        .avatar-box:hover { border-color: var(--bright); transform: scale(1.04); }
+
+        .avatar-box img {
+            width: 100%; height: 100%;
+            object-fit: cover; image-rendering: pixelated;
+        }
+
+        .avatar-glow {
+            position: absolute; inset: -6px;
+            border: 2px solid var(--bright);
+            opacity: 0; transition: opacity 0.3s; pointer-events: none;
+        }
+
+        .avatar-frame:hover .avatar-glow { opacity: 0.5; }
+
+        #avatarInput { display: none; }
+
+        .change-skin-btn {
+            background-color: var(--mid);
+            border: 2px solid var(--dark);
+            border-bottom: 4px solid var(--dark);
+            color: var(--bright);
+            font-family: 'Minecraft', monospace;
+            font-size: 9px;
+            padding: 7px 18px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.1s;
+        }
+
+        .change-skin-btn:hover { background-color: var(--light); color: var(--text-dark); }
+        .change-skin-btn:active { border-bottom: 2px solid var(--dark); transform: translateY(2px); }
+
+        .info-rows { margin-top: 16px; }
+
+        .info-row {
+            display: flex; flex-direction: column; gap: 3px;
+            padding: 10px 0;
+            border-bottom: 2px solid var(--mid);
+        }
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-row-label {
+            font-size: 8px; color: var(--muted);
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        .info-row-value {
+            font-size: 13px; color: var(--highlight);
+            text-shadow: 1px 1px 0 var(--dark);
+            word-break: break-all;
+        }
+
+        .dim-badge {
+            display: inline-block;
+            padding: 5px 14px; font-size: 11px;
+            border: 2px solid;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+        }
+
+        .dim-overworld { border-color: #5d9e3a; color: #7dc95a; background: rgba(93,158,58,0.2); }
+        .dim-nether    { border-color: #c05000; color: #ff7733; background: rgba(192,80,0,0.2); }
+        .dim-end       { border-color: #8040c0; color: #bb88ff; background: rgba(128,64,192,0.2); }
+
+        .xp-label-row {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .xp-label { font-size: 9px; color: var(--muted); letter-spacing: 1px; }
+        .xp-count { font-size: 11px; color: var(--bright); }
+
+        .xp-bar-bg {
+            height: 16px; background: var(--darker);
+            border: 2px solid var(--dark); overflow: hidden; position: relative;
+        }
+
+        .xp-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3a8a3a, #7dc95a);
+            transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
+        }
+
+        .xp-bar-fill::after {
+            content: '';
+            position: absolute; top: 2px; left: 4px; right: 4px; height: 4px;
+            background: rgba(255,255,255,0.25);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .stat-box {
+            background: var(--darker);
+            border: 2px solid var(--mid);
+            border-bottom: 4px solid var(--dark);
+            padding: 14px 10px;
+            text-align: center;
+            transition: transform 0.15s;
+        }
+
+        .stat-box:hover { transform: translateY(-3px); }
+
+        .stat-val {
+            font-size: 22px; color: var(--highlight);
+            text-shadow: 2px 2px 0 var(--dark);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 8px; color: var(--muted);
+            letter-spacing: 1px; margin-top: 5px; display: block;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .interest-chip {
+            background-color: var(--darker);
+            border: 2px solid var(--mid);
+            border-bottom: 4px solid var(--dark);
+            padding: 10px 8px;
+            text-align: center;
+            font-family: 'Minecraft', monospace;
+            font-size: 9px;
+            color: var(--bright);
+            letter-spacing: 0.5px;
+            transition: all 0.15s;
+            display: flex; align-items: center;
+            justify-content: center; gap: 6px;
+        }
+
+        .interest-chip.active {
+            background-color: var(--mid);
+            border-color: var(--bright);
+            color: var(--highlight);
+            box-shadow: 0 0 8px rgba(120,182,120,0.3);
+        }
+
+        .interest-chip.active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(120,182,120,0.4);
+        }
+
+        .interest-chip.inactive { opacity: 0.3; border-color: var(--dark); color: var(--muted); }
+        .chip-icon { font-size: 1rem; }
+
+        .bio-text {
+            font-size: 11px; color: chartreuse;
+            line-height: 2.2; text-align: left
+            
+        }
+
+        .logout-btn {
+            width: 100%;
+            background: linear-gradient(180deg, rgb(160,60,60) 0%, rgb(120,40,40) 100%);
+            border: 2px solid rgb(80,20,20);
+            border-bottom: 4px solid rgb(60,10,10);
+            color: rgb(255,160,160);
+            font-family: 'Minecraft', monospace;
+            font-size: 11px;
+            padding: 12px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.1s;
+        }
+
+        .logout-btn:hover { filter: brightness(1.2); }
+        .logout-btn:active { border-bottom: 2px solid rgb(60,10,10); transform: translateY(2px); }
+
+        .no-data {
+            text-align: center; padding: 80px 40px;
+            max-width: 600px; margin: 60px auto;
+        }
+
+        .no-data .nd-icon { font-size: 4rem; margin-bottom: 20px; display: block; }
+
+        .no-data h2 {
+            color: var(--bright); font-size: 18px;
+            text-shadow: 2px 2px 0 var(--dark); margin-bottom: 16px;
+        }
+
+        .no-data p { color: var(--muted); font-size: 11px; line-height: 2.2; }
+        .no-data a { color: var(--highlight); }
+
+        footer {
+            background-color: var(--mid);
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0,0,0,0.06) 16px),
+                repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0,0,0,0.06) 16px);
+            background-size: 16px 16px;
+            border-top: 4px solid var(--dark);
+            text-align: center;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            height: 130px; padding: 0 20px;
+            color: var(--muted); font-size: 10px; gap: 8px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 800px) {
+            .profile-grid { grid-template-columns: 1fr; }
+            .interests-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+
+<header>
+    <h1>⚔ Player Profile</h1>
+    <img src="../assets/minecraft.png" class="header-icon" alt="logo">
+</header>
+
+<nav class="navigation-area">
+    <a href="../index.html">Homepage</a>
+    <a href="../public/Overworld.html">Overworld</a>
+    <a href="../public/Nether.html">Nether</a>
+    <a href="../public/End.html">End</a>
+    <a href="../public/History.html">Who created Minecraft?</a>
+    <a href="../public/Quiz.html">Quiz</a>
+    <a href="../public/Login.html">Login</a>
+    <a href="../public/Profile.html" class="active">Profile</a>
+</nav>
+
+<body>
+
+    <div class="no-data mc-panel" id="noData" style="display:none;">
+        <span class="nd-icon">🗺</span>
+        <h2>No Player Found!</h2>
+        <p>
+            You need to <a href="../public/Signup.html">sign up first</a> to view your profile.<br>
+            Already have an account? <a href="../public/Login.html">Login here!</a>
+        </p>
+    </div>
+
+    <div class="page-wrapper" id="profilePage" style="display:none;">
+
+        <div class="welcome-banner mc-panel">
+            <div>
+                <h2 id="welcomeMsg">Welcome back, Player!</h2>
+                <p>Your adventure continues. Here is your player profile.</p>
+            </div>
+            <div class="banner-icon">⛏</div>
+        </div>
+
+        <div class="profile-grid">
+
+            <div class="left-col">
+
+                <div class="mc-panel">
+                    <div class="mc-panel-header">
+                        <span>🧍</span>
+                        <span class="label">PLAYER SKIN</span>
+                    </div>
+                    <div class="mc-panel-body">
+                        <div class="avatar-section">
+                            <div class="avatar-frame">
+                                <div class="avatar-box" onclick="document.getElementById('avatarInput').click()" title="Click to change skin">
+                                    <span id="avatarEmoji">🙂</span>
+                                    <img id="avatarImg" style="display:none;" alt="Avatar"/>
+                                </div>
+                                <div class="avatar-glow"></div>
+                            </div>
+                            <input type="file" id="avatarInput" accept="image/*" onchange="handleAvatar(event)">
+                            <button class="change-skin-btn" onclick="document.getElementById('avatarInput').click()">[ CHANGE SKIN ]</button>
+                        </div>
+                        <div class="info-rows">
+                            <div class="info-row">
+                                <span class="info-row-label">USERNAME</span>
+                                <span class="info-row-value" id="dispName">–</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-row-label">EMAIL</span>
+                                <span class="info-row-value" id="dispEmail" style="font-size:10px;">–</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-row-label">FAVORITE DIMENSION</span>
+                                <span class="info-row-value">
+                                    <span class="dim-badge" id="dispDimension">–</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mc-panel">
+                    <div class="mc-panel-header">
+                        <span>✨</span>
+                        <span class="label">INTEREST LEVEL</span>
+                    </div>
+                    <div class="mc-panel-body">
+                        <div class="xp-label-row">
+                            <span class="xp-label">INTERESTS UNLOCKED</span>
+                            <span class="xp-count" id="xpCount">0 / 9</span>
+                        </div>
+                        <div class="xp-bar-bg">
+                            <div class="xp-bar-fill" id="xpBar" style="width:0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="logout-btn" onclick="logout()">[ LOG OUT ]</button>
+            </div>
+
+            <div class="right-col">
+
+                <div class="mc-panel">
+                    <div class="mc-panel-header">
+                        <span>📊</span>
+                        <span class="label">PLAYER STATS</span>
+                    </div>
+                    <div class="mc-panel-body">
+                        <div class="stats-row">
+                            <div class="stat-box">
+                                <span class="stat-val" id="statInterests">0</span>
+                                <span class="stat-label">INTERESTS</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-val" id="statDimIcon">🌿</span>
+                                <span class="stat-label">DIMENSION</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-val">⭐</span>
+                                <span class="stat-label">MEMBER</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mc-panel">
+                    <div class="mc-panel-header">
+                        <span>🎮</span>
+                        <span class="label">INTERESTS &amp; PLAYSTYLE</span>
+                    </div>
+                    <div class="mc-panel-body">
+                        <div class="interests-grid" id="interestsGrid"></div>
+                    </div>
+                </div>
+
+                <div class="mc-panel">
+                    <div class="mc-panel-header">
+                        <span>📜</span>
+                        <span class="label">ABOUT THIS PLAYER</span>
+                    </div>
+                    <div class="mc-panel-body">
+                        <p class="bio-text" id="bioText">–</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<footer>
+    <p>⛏ An Adventure Map: Navigating Minecraft and Its Worlds</p>
+    <p>© 2024 Bucud &amp; Salcedo · All rights reserved.</p>
+</footer>
+
+<script>
+    const INTERESTS = [
+        { value: "Building",    label: "Building",          icon: "🔨" },
+        { value: "Redstone",    label: "Redstone",          icon: "⚡" },
+        { value: "PVP",         label: "PVP",               icon: "⚔️" },
+        { value: "Survival",    label: "Survival/Hardcore",  icon: "💕" },
+        { value: "Multiplayer", label: "Multiplayer Games",  icon: "👥" },
+        { value: "Mods",        label: "Mods",               icon: "🔧" },
+        { value: "Content",     label: "Content Creation",   icon: "🎬" },
+        { value: "Map",         label: "Map Making",         icon: "🗺️" },
+        { value: "Speedrunning",label: "Speedrunning",       icon: "⚡" },
+    ];
+
+    const DIM_ICONS = { Overworld: "🌿", Nether: "🔥", End: "🌕" };
+    function loadData() {
+        const raw = localStorage.getItem('minecraftUser');
+        if (!raw) return null;
+        try { return JSON.parse(raw); } catch { return null; }
+    }
+
+    function handleAvatar(e) {
+        const file = e.target.files[0]; if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+            localStorage.setItem('profileAvatar', ev.target.result);
+            showAvatar(ev.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function showAvatar(src) {
+        document.getElementById('avatarEmoji').style.display = 'none';
+        const img = document.getElementById('avatarImg');
+        img.src = src; img.style.display = 'block';
+    }
+
+    function logout() {
+        if (confirm('Are you sure you want to log out?')) {
+            localStorage.removeItem('minecraftUser');
+            localStorage.removeItem('profileAvatar');
+            window.location.href = '../public/Login.html';
+        }
+    }
+    function renderProfile(data) {
+        document.getElementById('profilePage').style.display = 'block';
+        document.getElementById('welcomeMsg').textContent = 'Welcome back, ' + (data.name || 'Player') + '!';
+        document.getElementById('dispName').textContent  = data.name  || '–';
+        document.getElementById('dispEmail').textContent = data.email || '–';
+
+        const dim = data.favoriteDimension || 'Overworld';
+        const dimEl = document.getElementById('dispDimension');
+        dimEl.textContent = dim;
+        dimEl.className = 'dim-badge dim-' + dim.toLowerCase();
+        document.getElementById('statDimIcon').textContent = DIM_ICONS[dim] || '🌿';
+
+        const saved = (data.interests || []).map(i => i.toLowerCase());
+        const grid = document.getElementById('interestsGrid');
+        grid.innerHTML = '';
+        INTERESTS.forEach(interest => {
+            const active = saved.includes(interest.value.toLowerCase());
+            const chip = document.createElement('div');
+            chip.className = 'interest-chip ' + (active ? 'active' : 'inactive');
+            chip.innerHTML = `<span class="chip-icon">${interest.icon}</span>${interest.label}`;
+            grid.appendChild(chip);
+        });
+
+        const count = saved.length;
+        document.getElementById('statInterests').textContent = count;
+        document.getElementById('xpCount').textContent = count + ' / 9';
+        setTimeout(() => {
+            document.getElementById('xpBar').style.width = Math.round((count / 9) * 100) + '%';
+        }, 300);
+
+        const activeLabels = INTERESTS
+            .filter(i => saved.includes(i.value.toLowerCase()))
+            .map(i => i.label);
+        document.getElementById('bioText').textContent = activeLabels.length > 0
+            ? `${data.name} is a ${dim} fan who loves ${activeLabels.slice(0,-1).join(', ')}${activeLabels.length > 1 ? ' and ' + activeLabels[activeLabels.length-1] : activeLabels[0]}. A true Minecraft adventurer!`
+            : `${data.name || 'This player'} is a ${dim} explorer ready for any adventure!`;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedAvatar = localStorage.getItem('profileAvatar');
+        if (savedAvatar) showAvatar(savedAvatar);
+        const data = loadData();
+        if (!data) {
+            document.getElementById('noData').style.display = 'block';
+        } else {
+            renderProfile(data);
+        }
+    });
+</script>
+
+</html>

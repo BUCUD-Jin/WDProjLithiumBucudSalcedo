@@ -6,28 +6,56 @@
     <meta name="description" content="2Q 1st Graded Exercise">
     <meta name="keywords" content="WDProjLithiumBucudSalcedo">
     <meta name="BucudSalcedo" content="3rd Quarter Project">
-    <link rel="icon" href="../assets/minecraft.png"  type="img/png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../assets/minecraft.png" type="img/png">
     <style>
         @font-face {
             font-family: 'Minecraft';
             src: url(../assets/MinecraftFont.ttf) format('truetype');
         }
-    </style>
-    <style>
-        html, body, h1 {
-            margin: 0;
-            padding: 0;
-            font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --dark:      rgb(30, 47, 30);
+            --darker:    rgb(20, 32, 20);
+            --mid:       rgb(59, 91, 59);
+            --panel:     rgb(72, 111, 72);
+            --light:     rgb(98, 150, 98);
+            --bright:    rgb(120, 182, 120);
+            --highlight: rgb(160, 220, 160);
+            --muted:     rgb(101, 148, 101);
+            --text-dark: rgb(59, 91, 59);
+        }
+
+        html, body {
+            font-family: 'Minecraft', monospace;
             font-weight: normal;
             font-style: normal;
         }
 
-        header { /* CSS for the header*/
-            background-color: rgb(59, 91, 59);
-            background-size: cover;
-            background-position: center;
+        body {
+            background-color: var(--light);
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(0,0,0,0.06) 32px),
+                repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(0,0,0,0.06) 32px);
+            background-size: 32px 32px;
+            animation: bgScroll 40s linear infinite;
+            min-height: 100vh;
+            color: var(--highlight);
+        }
+
+        @keyframes bgScroll {
+            from { background-position: 0 0; }
+            to   { background-position: 32px 32px; }
+        }
+
+        
+        header {
+            background-color: var(--mid);
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0,0,0,0.08) 16px),
+                repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0,0,0,0.08) 16px);
+            background-size: 16px 16px;
             text-align: center;
             display: flex;
             align-items: center;
@@ -35,262 +63,434 @@
             position: relative;
             height: 100px;
             padding: 0 20px;
+            border-bottom: 4px solid var(--dark);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        header h1 {
+            color: var(--bright);
+            font-size: 28px;
+            text-shadow: 3px 3px 0 var(--dark);
+            letter-spacing: 2px;
         }
 
         .header-icon {
-            height: 60px;
-            width: auto;
-        }
-
-        .header-rightside {
             position: absolute;
-            top: 50%;
-            right: 20px;
+            top: 50%; right: 20px;
             transform: translateY(-50%);
+            height: 60px;
+            image-rendering: pixelated;
+            filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.4));
         }
 
-        body {
-            background-color: rgb(98, 150, 98);
-            height: 1300px;
-            text-align: center;
-            }
-
-        .body {
-            padding-top: 40px;
-            font-size: 25px;
-            margin-left: 90px;
-            margin-right: 90px;
-        }
-
-        footer { /* CSS for the footer */
-            background-color: rgb(59, 91, 59);
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            height: 230px;
-            margin-top: 35px;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-         .navigation-area {
+        
+        .navigation-area {
             position: sticky;
             top: 0;
-            background-color: rgb(76, 115, 76);
+            background-color: var(--darker);
             display: flex;
             justify-content: center;
-            gap: 40px;
-            padding: 12px 0;
-            border-bottom: 4px solid rgb(76, 115, 76);
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 8px 10px;
+            border-bottom: 3px solid var(--dark);
+            z-index: 100;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
         }
 
         .navigation-area a {
-            font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
-            font-weight: normal;
-            font-size: 16px;
-            color: rgb(101, 148, 101);
-            transition: 0.3 ease, color 0.3 ease;
-
+            font-family: 'Minecraft', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 2px solid transparent;
+            transition: all 0.15s;
         }
 
         .navigation-area a:hover {
-            transform: scale(1.1);
+            color: var(--bright);
+            border-color: var(--mid);
+            background-color: var(--mid);
+            transform: translateY(-2px);
         }
 
-
-        .link {
-            color: inherit;
-            text-decoration: none;
-            display: inline-block;
+        .navigation-area a.active {
+            color: var(--highlight);
+            border-color: var(--bright);
+            background-color: var(--panel);
         }
 
-         body {
-            font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
-            margin: 0;
-            background-color: rgb(98, 150, 98);
-            color:rgb(98, 150, 98);
+        
+        .page-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 36px 20px 60px;
         }
 
-         .big-box {
-            background-color: rgb(72, 111, 72);
-            margin: 60px auto;
-            padding: 40px;
-            height: 96px;
-            width: 1100px;
-            border-radius: 15px;
-            text-align: center;
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--mid) 50%, var(--darker) 100%);
+            border: 3px solid var(--bright);
+            border-radius: 4px;
+            padding: 22px 36px;
+            margin-bottom: 28px;
+            display: flex;
             align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 5px 5px 0 var(--dark);
+            animation: fadeDown 0.5s ease both;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-banner h2 {
+            color: var(--highlight);
+            font-size: 16px;
+            text-shadow: 2px 2px 0 var(--dark);
+        }
+
+        .welcome-banner p {
+            color: var(--muted);
+            font-size: 9px;
+            margin-top: 8px;
+            line-height: 2.2;
+        }
+
+        .banner-icon {
+            font-size: 2.5rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.5));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-8px); }
+        }
+
+       
+        .mc-panel {
+            background-color: var(--panel);
+            border: 3px solid var(--dark);
+            border-radius: 4px;
+            box-shadow: 5px 5px 0 var(--dark), inset 0 1px 0 rgba(255,255,255,0.06);
+            overflow: hidden;
+            animation: fadeUp 0.5s ease 0.1s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .mc-panel-header {
+            background: linear-gradient(90deg, var(--darker), var(--mid));
+            border-bottom: 3px solid var(--dark);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mc-panel-header .label {
+            font-size: 11px;
+            color: var(--bright);
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 0 var(--dark);
+        }
+
+        .mc-panel-body {
+            padding: 28px 32px;
             display: flex;
             flex-direction: column;
+            gap: 6px;
+            text-align: center;
         }
 
-        .big-box2 {
-            background-color: rgb(72, 111, 72);
-            margin: 60px auto;
-            padding: 40px;
-            height: 750px;
-            width: 500px;
-            border-radius: 15px;
-            text-align: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
+        
+        .field-label {
+            font-size: 9px;
+            color: var(--highlight);        
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 14px;
+            margin-bottom: 4px;
+            text-shadow: 1px 1px 0 var(--dark);
         }
 
-        .big-box2 input {
-            width: 80%;
-            margin: 10px auto;
-            text-align: center;
-            background-color: rgb(101, 148, 101);
-            border: 1px solid rgb(59, 91, 59);
-            font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
-            font-weight: normal;
-            font-style: normal;
+        .mc-input {
+            width: 100%;
+            padding: 10px 14px;
+            background-color: var(--darker);
+            border: 2px solid var(--mid);
+            border-bottom: 4px solid var(--dark);
+            color: var(--highlight);         
+            font-family: 'Minecraft', monospace;
+            font-size: 11px;
             outline: none;
-            padding: 5px;
-        }
-
-        .big-box2 select {
-            width: 80%;
-            margin: 10px auto;
+            transition: border-color 0.2s;
             text-align: center;
-            background-color: rgb(101, 148, 101);
-            border: 1px solid rgb(120, 182, 120);
-            font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            color: rgb(59, 91, 59);
         }
 
-        .big-box2 input::placeholder {
-            color:rgb(59, 91, 59);
+        .mc-input:focus {
+            border-color: var(--bright);
+            box-shadow: 0 0 0 1px var(--bright);
+        }
+
+        .mc-input::placeholder {
+            color: var(--muted);
+            font-size: 9px;
+        }
+
+       
+        .mc-select {
+            width: 100%;
+            padding: 10px 14px;
+            text-align: center;
+            background-color: var(--darker);
+            border: 2px solid var(--mid);
+            border-bottom: 4px solid var(--dark);
+            color: var(--highlight);          
+            font-family: 'Minecraft', monospace;
+            font-size: 11px;
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .mc-select:focus { border-color: var(--bright); }
+
+        .mc-select option {
+            background-color: var(--darker);
+            color: var(--highlight);
+        }
+
+       
+        .section-title {
             font-size: 10px;
-            text-align: center;
-            text-align: fixed;
+            color: var(--bright);
+            letter-spacing: 1px;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--mid);
+            text-shadow: 1px 1px 0 var(--dark);
         }
 
+       
         .checkbox-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            width: 90%;
-            margin: 20px auto;
-            text-align: center;
+            gap: 8px;
+            margin-bottom: 8px;
         }
 
         .checkbox-grid label {
-             background-color: rgb(59, 91, 59);
-            padding: 8px;
-            border: 1px solid rgb(120, 182, 120);
-            color: rgb(120, 182, 120);
-            font-size: 10px;
+            background-color: var(--darker);
+            padding: 10px 8px;
+            border: 2px solid var(--mid);
+            border-bottom: 4px solid var(--dark);
+            color: var(--bright);             
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            gap: 8px;
             cursor: pointer;
+            transition: all 0.15s;
+            font-family: 'Minecraft', monospace;
+        }
 
+        .checkbox-grid label:hover {
+            background-color: var(--mid);
+            border-color: var(--bright);
+            color: var(--highlight);
+            transform: translateY(-2px);
         }
 
         .checkbox-grid input[type="checkbox"] {
-            width: 20%;
-            margin-bottom: 5px;
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            accent-color: var(--bright);
+            cursor: pointer;
         }
 
+       
         .createacc {
-            background-color: rgb(120, 182, 120);
-            border-radius: 20px;
-            width: 75%;
-            margin: 20px auto;
-            padding: 15px;
-            border: 2px solid;
-            color: rgb(59, 91, 59);
-             font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
-            font-weight: normal;
-            font-style: normal;
+            width: 100%;
+            margin-top: 24px;
+            padding: 14px;
+            background: linear-gradient(180deg, var(--bright) 0%, var(--muted) 100%);
+            border: 2px solid var(--dark);
+            border-bottom: 4px solid var(--dark);
+            color: var(--darker);             /* dark text on bright bg = high contrast */
+            font-family: 'Minecraft', monospace;
+            font-size: 13px;
+            letter-spacing: 1px;
             cursor: pointer;
-            align-items: center;
-
-
+            transition: all 0.1s;
+            text-shadow: none;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
         .createacc:hover {
-            transform: scale(1.1);
-
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
-        </style>
-        <header>
-             <img src="../assets/minecraft.png" class="header-icon header-rightside" style="height: 60px;">
-        <h1 style="color:rgb(101, 148, 101)" > Sign Up </h1>
-        </header>
+        .createacc:active {
+            border-bottom: 2px solid var(--dark);
+            transform: translateY(2px);
+        }
 
-        <nav class="navigation-area">
-        <a href="../index.html">Homepage</a>
-        <a href="../public/Overworld.html">Overworld</a>
-        <a href="../public/Nether.html">Nether</a>
-        <a href="../public/End.html">End</a>
-        <a href="../public/History.html">Who created Minecraft?</a>
-        <a href="../public/Quiz.html">Quiz</a>
-        <a href="../public/Login.html">Login</a>
-        <a href="../public/Profile.html">Profile</a>
-    </nav>
+        
+        footer {
+            background-color: var(--mid);
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0,0,0,0.06) 16px),
+                repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0,0,0,0.06) 16px);
+            background-size: 16px 16px;
+            border-top: 4px solid var(--dark);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 130px;
+            padding: 0 20px;
+            color: var(--muted);
+            font-size: 10px;
+            gap: 8px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        }
 
-    <body>
+        @media (max-width: 600px) {
+            .checkbox-grid { grid-template-columns: repeat(2, 1fr); }
+            .mc-panel-body { padding: 20px 16px; }
+        }
+    </style>
+</head>
 
-        <div class="big-box">
+<header>
+    <h1>Sign Up</h1>
+    <img src="../assets/minecraft.png" class="header-icon" alt="logo">
+</header>
 
-            <h1 style="color: rgb(120, 182, 120)"> Welcome player! </h1>
-            <p> Do you wish to create a customizable profile on our website? Do you wish see your personal best scores at our quiz page? Then create an account now by filling up the required details! </p>
+<nav class="navigation-area">
+    <a href="../index.html">Homepage</a>
+    <a href="../public/Overworld.html">Overworld</a>
+    <a href="../public/Nether.html">Nether</a>
+    <a href="../public/End.html">End</a>
+    <a href="../public/History.html">Who created Minecraft?</a>
+    <a href="../public/Quiz.html">Quiz</a>
+    <a href="../public/Login.html">Login</a>
+    <a href="../public/Profile.html">Profile</a>
+</nav>
+
+<body>
+<div class="page-wrapper">
+
+   
+    <div class="welcome-banner">
+        <div>
+            <h2>Welcome, Player!</h2>
+            <p>
+                Create an account to get access to a personal profile webpage and track your personal best scores on the Quiz page!
+            </p>
         </div>
+        <div class="banner-icon">🙂</div>
+    </div>
+
+    
+    <div class="mc-panel">
+        <div class="mc-panel-header">
+            <span class="label">CREATE YOUR ACCOUNT</span>
+        </div>
+
+
+        <form class="mc-panel-body" id="signupForm">
+
+            <div class="field-label">Username</div>
+            <input class="mc-input" type="text" id="username" placeholder="Enter your username" required>
 
         <div class="big-box2">
             <form id="signupForm">
 
-            <h1 style="color: rgb(120, 182, 120)"> Create Your Account </h1>
-            <p> Username: </p>
-            <input type="text" id="username" placeholder="Username" required>
-            <p> Email Address: </p>
-            <input type="email" id="email" placeholder="Email" required>
-            <p> Password: </p>
-            <input type="password" id="password" placeholder="Password" required>
 
-        <h3 style="color:rgb(120, 182, 120)"> What is your favorite dimension? </h3>
+            <div class="field-label">Email Address</div>
+            <input class="mc-input" type="email" id="email" placeholder="Enter your email" required>
 
-        <select id="dimension">
-            <option value="Overworld">Overworld</option>
-            <option value="Nether">Nether</option>
-            <option value="End">End</option>
-        </select>
+            <div class="field-label">Password</div>
+            <input class="mc-input" type="password" id="password" placeholder="Enter your password" required>
 
-        <h3 style="color: rgb(120, 182, 120)"> What are your interests? </h3>
+            <div class="field-label">Favorite Dimension</div>
+            <select class="mc-select" id="dimension">
+                <option value="Overworld">🌿 Overworld</option>
+                <option value="Nether">🔥 Nether</option>
+                <option value="End">🌕 The End</option>
+            </select>
 
-        <div class="checkbox-grid">
+            <div class="section-title">What are your interests? Select all that apply</div>
 
-        <label> <input type="checkbox" name="interest" value="Building"> Building</label>
-        <label> <input type="checkbox" name="interest" value="Redstone"> Redstone</label>
-        <label> <input type="checkbox" name="interest" value="PVP"> PVP</label>
-        <label> <input type="checkbox" name="interest" value="Survival"> Survival/Hardcore</label>
-        <label> <input type="checkbox" name="interest" value="Multiplayer"> Multiplayer Games </label>
-        <label> <input type="checkbox" name="interest" value="Mods"> Mods</label>
-        <label> <input type="checkbox" name="interest" value="Content"> Content Creation</label>
-        <label> <input type="checkbox" name="interest" value="Map"> Map Making</label>
-        <label> <input type="checkbox" name="interest" value="Map"> Speedrunning </label>
-        </div>
+            <div class="checkbox-grid">
+                <label><input type="checkbox" name="interest" value="Building"> 🏗 Building</label>
+                <label><input type="checkbox" name="interest" value="Redstone"> ⚡ Redstone</label>
+                <label><input type="checkbox" name="interest" value="PVP"> ⚔ PVP</label>
+                <label><input type="checkbox" name="interest" value="Survival"> 🛡 Survival/Hardcore</label>
+                <label><input type="checkbox" name="interest" value="Multiplayer"> 👥 Multiplayer Games</label>
+                <label><input type="checkbox" name="interest" value="Mods"> 🏗️ Mods</label>
+                <label><input type="checkbox" name="interest" value="Content"> 🎬 Content Creation</label>
+                <label><input type="checkbox" name="interest" value="Map"> 🗺 Map Making</label>
+                <label><input type="checkbox" name="interest" value="Speedrunning"> ⏱ Speedrunning</label>
+            </div>
 
-        <button type="submit" class="createacc">Create Account</button>
+            <button type="submit" class="createacc">[ Create Account ]</button>
+
         </form>
+    </div>
 
-        <script src="signupdata.js"></script>
+</div>
+</body>
+
+<footer>
+    <p>⛏ An Adventure Map: Navigating Minecraft and Its Worlds</p>
+    <p>© 2024 Bucud &amp; Salcedo · All rights reserved.</p>
+</footer>
+
+<script>
+    document.querySelector('#signupForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username  = document.getElementById('username').value;
+        const email     = document.getElementById('email').value;
+        const password  = document.getElementById('password').value;
+        const dimension = document.getElementById('dimension').value;
+
+        const theInterests = [];
+        const checkboxes = document.querySelectorAll('input[name="interest"]:checked');
+        checkboxes.forEach((checkbox) => {
+            theInterests.push(checkbox.value);
+        });
+
+        const userData = {
+            name:              username,
+            email:             email,
+            pass:              password,
+            favoriteDimension: dimension,
+            interests:         theInterests
+        };
+
+        localStorage.setItem('minecraftUser', JSON.stringify(userData));
+        alert("You've successfully created your account! Welcome " + username);
+        window.location.href = "Profile.html";
+    });
+</script>
+
+</html>
 
     </div>
 

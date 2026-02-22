@@ -13,8 +13,8 @@ checkboxes.forEach((checkbox) => {
 });
 
 const players = JSON.parse(localStorage.getItem('minecraftPlayers')) || [];
-const doesUsernameExist = players.some(player => player.name === username);
-const doesEmailExist = players.some(player => player.email === email);
+const doesUsernameExist = players.some(player => player.name === username.toLowerCase);
+const doesEmailExist = players.some(player => player.email === email.toLowerCase);
 
 if (doesUsernameExist) {
     alert("This username is already taken");
@@ -39,7 +39,7 @@ localStorage.setItem('minecraftPlayers', JSON.stringify(players));
 localStorage.setItem('currentUser', JSON.stringify(userData));
 
 localStorage.setItem('minecraftUser', JSON.stringify(userData));
-alert("You've successfully created your account! Welcome " + username);
+alert("You've successfully created your account! Welcome, " + username);
 window.location.href = "Profile.html";
 
 });

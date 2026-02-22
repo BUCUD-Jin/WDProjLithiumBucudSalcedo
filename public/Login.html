@@ -13,21 +13,40 @@
             font-family: 'Minecraft';
             src: url(../assets/MinecraftFont.ttf) format('truetype');
         }
+
+        @keyframes mcPanelSlide {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
     <style>
-        html, body, h1 {
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body {
             margin: 0;
             padding: 0;
             font-family: 'Minecraft';
             src: url(../assets/MinecraftFont.ttf) format('truetype');
             font-weight: normal;
             font-style: normal;
+            min-height: 100vh;
         }
 
-        header { /* CSS for the header*/
-            background-color: rgb(213, 147, 114);
-            background-size: cover;
+        header { 
+            background-color: rgb(137, 94, 73);
+            background-image:
+            repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0, 0, 0, 0.06) 16px),
+            repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0, 0, 0, 0.06) 16px);
+            background-size: 16px 16px;
             background-position: center;
+            border-bottom: 2px solid rgb(192, 132, 102);
             text-align: center;
             display: flex;
             align-items: center;
@@ -37,9 +56,18 @@
             padding: 0 20px;
         }
 
+        header h1 {
+            color: rgb(216, 168, 144);
+            font-size: 28px;
+            text-shadow: 2px 2px 0 black;
+        }
+
         .header-icon {
             height: 60px;
-            width: auto;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
         }
 
         .header-rightside {
@@ -50,8 +78,14 @@
         }
 
         body {
-            background-color: rgb(175, 120, 93);
-            text-align: center;
+            background-color: rgb(196, 154, 133);
+            background-image:
+            repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(0, 0, 0, 0.06) 32px),
+            repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(0, 0, 0, 0.06) 32px);
+            background-size: 32px 32px;
+            display: flex;
+            flex-direction: column;
+            color: rgb(196, 154, 133);
             }
 
         .body {
@@ -61,10 +95,7 @@
             margin-right: 90px;
         }
 
-        footer { /* CSS for the footer */
-            background-color: rgb(213, 147, 114);
-            background-size: cover;
-            background-position: center;
+        footer { 
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -75,17 +106,28 @@
             margin-top: 35px;
             padding: 0 20px;
             width: 100%;
+            background-color: rgb(137, 94, 73);
+            background-image:
+            repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0, 0, 0, 0.06) 16px),
+            repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0, 0, 0, 0.06) 16px);
+            background-size: 16px 16px;
+            background-position: center;
+        }
+
+        footer p {
+            text-align: center;
         }
 
          .navigation-area {
             position: sticky;
             top: 0;
-            background-color: rgb(204, 141, 109);
+            background-color: rgb(169, 116, 90);
             display: flex;
             justify-content: center;
             gap: 40px;
             padding: 12px 0;
-            border-bottom: 4px solid rgb(204, 141, 109);
+            border: 4px solid rgb(169, 116, 90);
+            z-index: 100;
         }
 
         .navigation-area a {
@@ -93,15 +135,68 @@
             src: url(../assets/MinecraftFont.ttf) format('truetype');
             font-weight: normal;
             font-size: 16px;
-            color: rgb(160, 112, 88);
-            transition: 0.3 ease, color 0.3 ease;
+            color: rgb(137, 94, 73);
+            transition: all 0.15s;
 
         }
 
         .navigation-area a:hover {
+            background-color: rgb(196, 154, 133);
             transform: scale(1.1);
         }
 
+        .page-wrapper {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            flex: 1;
+        }
+
+        .mc-panel {
+            background-color: rgb(143, 99, 76);
+            border: 4px solid 3px solid rgb(152, 108, 84);
+            border-radius: 6px;
+            box-shadow: 5px 5px 0 rgb(96, 67, 51);
+            overflow: hidden;
+            animation: mcPanelSlide 0.6s ease-out;
+        }
+
+        .mc-panel-header {
+            padding: 12px 20px;
+            background: linear-gradient(90deg, rgb(96, 67, 51), rgb(161, 114, 88));
+            border-bottom: 3px solid rgb(152, 108, 84);
+            color: rgb(192, 132, 102);
+            font-size: 20px;
+            text-shadow: 1px 1px 0 rgb(152, 108, 84);
+        }
+
+        .mc-panel-body {
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mc-input {
+            padding: 12px;
+            width: 100%;
+            background-color: rgb(152, 108, 84);
+            border: 2px solid rgb(175, 120, 93);
+            border-bottom: 4px solid rgb(160, 112, 88);
+            color: rgb(118, 83, 65);
+            font-family: 'Minecraft';
+            src: url(../assets/MinecraftFont.ttf) format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .field-label {
+            font-size: 19px;
+            color: rgb(196, 154, 133);
+            text-transform: uppercase;
+            text-shadow: 1px 1px rgb(160, 112, 88);
+            margin-top: 10px;
+        }
 
         .link {
             color: inherit;
@@ -115,19 +210,7 @@
             margin: 0;
             background-color: rgb(175, 120, 93);
             color:rgb(169, 116, 90);
-        }
-
-         .big-box {
-            background-color: rgb(137, 94, 73);
-            margin: 60px auto;
-            padding: 40px;
-            height: 420px;
-            width: 500px;
-            border-radius: 15px;
             text-align: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
         }
 
         #loginUsername, #loginPassword {
@@ -140,15 +223,11 @@
             src: url(../assets/MinecraftFont.ttf) format('truetype');
             font-weight: normal;
             font-style: normal;
-            border-radius: 20px;
+            border-radius: 4px;
             text-align: center;
         }
 
-        .big-box p {
-            color: rgb(216, 168, 144);
-            margin-bottom: 5px;
-
-        }
+        
 
         #loginUsername::placeholder, #loginPassword::placeholder {
             color: rgb(137, 94, 73);
@@ -157,6 +236,7 @@
 
         .createacc {
             background-color: rgb(216, 168, 144);
+            background: linear-gradient(180deg, rgb(193, 136, 107) 0%, rgb(184, 134, 107) 100%);
             border: 2px solid rgb(137, 94, 73);
             font-family: 'Minecraft';
             src: url(../assets/MinecraftFont.ttf) format('truetype');
@@ -169,10 +249,26 @@
             font-size: 22px;
             color: rgb(160, 112, 88);
             cursor: pointer;
+            transition: all 0.1s;
+            text-align: center;
+            align-items: center;
         }
 
         .createacc:hover {
-            transform: scale(1.15);
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        .signup-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: rgb(109, 77, 60);
+            font-size: 11px;
+        }
+
+        .signup-link:hover {
+            transform: scale(1.2);
         }
 
         </style>
@@ -194,36 +290,37 @@
 
     <body>
 
-        <div class="big-box">
+        <div class="page-wrapper">
+            <div class="mc-panel">
+                <div class="mc-panel-header">LOGIN TO AN EXISTING ACCOUNT</div>
+                <form class="mc-panel-body" id="loginForm">
+                    <div class="field-label">Username</div>
+                    <input class="mc-input" type="text" id="loginUsername" placeholder="Enter Username" required>
 
-            <h1 style="color: rgb(192, 132, 102)"> Login to an existing account </h1>
+                    <div class="field-label">Password</div>
+                    <input class="mc-input" type="password" id="loginPassword" placeholder="Enter Password" required>
 
-            <form id="loginForm">
-                <p> Username: </p>
-                <input type="text" id="loginUsername" placeholder="Enter Your Username" required>
-                <p> Password: </p>
-                <input type="password" id="loginPassword" placeholder="Enter Your Password" required>
+                    <button type="submit" class="createacc">Explore Your World</button>
+                    <a href="Signup.html" class="signup-link">Don't have an account? Sign up here!</a>
+                </form>
+            </div>
+        </div>
 
-                <button type="submit" class="createacc">Explore your world</button>
-            </form>
-
-            <a href="Signup.html" style="text-decoration: none;" cursor="pointer;">
-            <h3 style="color: rgb(192, 132, 102)">Don't have an account yet? Sign up here</h3>
-            </a>
+        
 
             <script src="logindata.js"></script>
 
-        </div>
-
-        </body>
-
-         <footer>
+            <footer>
 
         <h1 style="color:rgb(216, 168, 144)" > About Us </h1>
         <p> © Jin Bucud and Caine Salcedo 2025 </p> 
         <p> Source for information: Minecraft Wiki. (n.d.). Minecraft Wiki.
-            <a style="color: rgb(137, 94, 73)"; href="https://minecraft.wiki/" target="_blank"> Minecraft Wiki. (n.d.). Minecraft Wiki. </a>
+            <a style="color: rgb(184, 134, 107)"; href="https://minecraft.wiki/" target="_blank"> Minecraft Wiki. (n.d.). Minecraft Wiki. </a>
             </p>
 
 
     </footer>
+
+    </body>
+    </html>
+        

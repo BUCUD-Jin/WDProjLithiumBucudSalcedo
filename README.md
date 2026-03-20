@@ -1,4 +1,25 @@
 # Bucud and Salcedo project proposal
+
+# FINAL MODIFICATION PROPOSAL
+
+Since our website already implements “Create” and “Read” of CRUD through our account creation and profile webpage, our main focus is the implementation of “Update” and “Delete”.
+
+## UPDATE
+
+Currently, our website has a feature wherein the user can customize their profile picture to allow the user to reflect their personality more, which means that our website already has the “Update” part of CRUD. However, we still want to expand this. To further expand “Update”, we will have a feature wherein the user can change the details of their profile such as username, email, password and other details of their account such as their interests. The purpose of this is to provide the user with a “Quality-of-Life” feature wherein the user can change parts of their profile without needing to create a brand new one. 
+
+## DELETE
+
+To implement “Delete”, we will have a “Delete Account” feature. If the user no longer wants to be a part of the website, they have the option to remove all of their user data from the website permanently. If a user wants to delete their account, a popup confirmation message saying “Are you sure you want to delete your account?” will appear to confirm the user’s decision. The purpose of this is as stated earlier, the user will have an option to delete their account along with its data if they want to.
+
+Here is the wireframe for our updated profile webpage, featuring new buttons which would allow the user to edit and delete their profile.
+
+[Q4](assets/image-14.png)
+
+Here is what the warning popup that appears whenever the user clicks the "Delete Account?" button.
+
+[Delete](assets/image-15.png)
+
 Website title: "An Adventure Map: Navigating Minecraft and It's Worlds."  
 
 Website logo:  

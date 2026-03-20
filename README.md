@@ -12,6 +12,8 @@ Currently, our website has a feature wherein the user can customize their profil
 
 To implement “Delete”, we will have a “Delete Account” feature. If the user no longer wants to be a part of the website, they have the option to remove all of their user data from the website permanently. If a user wants to delete their account, a popup confirmation message saying “Are you sure you want to delete your account?” will appear to confirm the user’s decision. The purpose of this is as stated earlier, the user will have an option to delete their account along with its data if they want to.
 
+## WIREFRAMES
+
 Here is the wireframe for our updated profile webpage, featuring new buttons which would allow the user to edit and delete their profile.
 
 ![Q4](assets/image-14.png)

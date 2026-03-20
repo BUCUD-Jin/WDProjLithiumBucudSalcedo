@@ -14,17 +14,19 @@ To implement “Delete”, we will have a “Delete Account” feature. If the u
 
 Here is the wireframe for our updated profile webpage, featuring new buttons which would allow the user to edit and delete their profile.
 
-[Q4](assets/image-14.png)
+![Q4](assets/image-14.png)
 
 Here is what the warning popup that appears whenever the user clicks the "Delete Account?" button.
 
-[Delete](assets/image-15.png)
+![Delete](assets/image-15.png)
+
+# END OF Q4 PROJECT PROPOSAL
 
 Website title: "An Adventure Map: Navigating Minecraft and It's Worlds."  
 
 Website logo:  
 
-[Logo](assets/minecraft.png)  
+![Logo](assets/minecraft.png)  
 
 This website aims to guide the new players of Minecraft on how they can progress deeper, accomplish quests, acquire items, explore worlds, and end the game. This serves as their guide to what things they should prioritze in order to finish the game. This website contains item guides, loot guides, map guides, mob guides, and the basuc progression of the game.  
 

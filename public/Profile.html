@@ -403,6 +403,30 @@
             transition: all 0.1s;
         }
 
+        .delete-btn {
+            width: 100%;
+            background: linear-gradient(180deg, rgb(152, 101, 179) 0%, rgb(124, 83, 147) 100%);
+            border: 2px solid rgb(95, 59, 115);
+            border-bottom: 4px solid rgb(69, 41, 83);
+            color: rgb(208, 158, 235);
+            font-family: 'Minecraft', monospace;
+            font-size: 11px;
+            padding: 12px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.1s;
+        }
+
+        .delete-btn:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 10px rgba(129, 63, 63, 0.3);
+        }
+
+        .delete-btn:active {
+            transform: translateY(2px);
+            border-bottom: 2px solid;
+        }
+
         .logout-btn:hover { filter: brightness(1.2); }
         .logout-btn:active { border-bottom: 2px solid rgb(60,10,10); transform: translateY(2px); }
 
@@ -537,6 +561,8 @@
                 </div>
 
                 <button class="logout-btn" onclick="logout()">[ LOG OUT ]</button>
+                <button class="delete-btn" onclick="deleteAccount()">[ DELETE ACCOUNT ]</button>"
+
             </div>
 
             <div class="right-col">
@@ -686,6 +712,19 @@
             renderProfile(data);
         }
     });
+
+    function deleteAccount() {
+        const popup = "Are you SUPER sure you want to delete your account? Data cannot be recovered once account is deleted!";
+
+        if (confirm(popup)) {
+            localStorage.removeItem('minecraftUser');
+            localStorage.removeItem('profileAvatar');
+            alert("Your account has successfully been deleted");
+            window.location.href = '../public/Signup.html';
+        }
+    }
+
+
 </script>
 
 </html>

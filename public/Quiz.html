@@ -6,28 +6,57 @@
     <meta name="description" content="2Q 1st Graded Exercise">
     <meta name="keywords" content="WDProjLithiumBucudSalcedo">
     <meta name="BucudSalcedo" content="Quiz">
-    <link rel="icon" href="../assets/minecraft.png"  type="img/png">
-    <link rel="stylesheet" href="style.css">
-   <style>
+    <link rel="icon" href="../assets/minecraft.png" type="img/png">
+    <style>
         @font-face {
             font-family: 'Minecraft';
             src: url(../assets/MinecraftFont.ttf) format('truetype');
         }
-    </style>
-    <style>
-        html, body, h1 {
-            margin: 0;
-            padding: 0;
-            font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --dark:      rgb(30, 47, 30);
+            --darker:    rgb(20, 32, 20);
+            --mid:       rgb(59, 91, 59);
+            --panel:     rgb(72, 111, 72);
+            --light:     rgb(98, 150, 98);
+            --bright:    rgb(120, 182, 120);
+            --highlight: rgb(160, 220, 160);
+            --muted:     rgb(101, 148, 101);
+            --text-dark: rgb(59, 91, 59);
+        }
+
+        html, body {
+            font-family: 'Minecraft', monospace;
             font-weight: normal;
             font-style: normal;
         }
 
+        body {
+            background-color: var(--light);
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(0,0,0,0.06) 32px),
+                repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(0,0,0,0.06) 32px);
+            background-size: 32px 32px;
+            animation: bgScroll 40s linear infinite;
+            min-height: 100vh;
+            color: var(--highlight);
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes bgScroll {
+            from { background-position: 0 0; }
+            to   { background-position: 32px 32px; }
+        }
+
         header {
-            background-color: rgb(181, 134, 214);
-            background-size: cover;
-            background-position: center;
+            background-color: var(--mid);
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0,0,0,0.08) 16px),
+                repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0,0,0,0.08) 16px);
+            background-size: 16px 16px;
             text-align: center;
             display: flex;
             align-items: center;
@@ -35,322 +64,414 @@
             position: relative;
             height: 100px;
             padding: 0 20px;
+            border-bottom: 4px solid var(--dark);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        header h1 {
+            color: var(--bright);
+            font-size: 22px;
+            text-shadow: 3px 3px 0 var(--dark);
+            letter-spacing: 2px;
         }
 
         .header-icon {
-            height: 60px;
-            width: auto;
-        }
-
-        .header-rightside {
             position: absolute;
-            top: 50%;
-            right: 20px;
+            top: 50%; right: 20px;
             transform: translateY(-50%);
-        }
-
-        footer {
-            background-color: rgb(181, 134, 214);
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            height: 230px;
-            padding: 0 20px;
+            height: 60px;
+            image-rendering: pixelated;
+            filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.4));
         }
 
         .navigation-area {
             position: sticky;
             top: 0;
-            background-color: rgb(163, 121, 193);
+            background-color: var(--darker);
             display: flex;
             justify-content: center;
-            gap: 40px;
-            padding: 12px 0;
-            border-bottom: 4px solid rgb(163, 121, 193);
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 8px 10px;
+            border-bottom: 3px solid var(--dark);
+            z-index: 100;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
         }
 
         .navigation-area a {
-            font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
-            font-weight: normal;
-            font-size: 16px;
-            color: rgb(141, 104, 167);
-            transition: 0.3 ease, color 0.3 ease;
-
+            font-family: 'Minecraft', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 2px solid transparent;
+            transition: all 0.15s;
         }
 
         .navigation-area a:hover {
-            transform: scale(1.1);
+            color: var(--bright);
+            border-color: var(--mid);
+            background-color: var(--mid);
+            transform: translateY(-2px);
         }
 
-        body {
-            font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
-            margin: 0;
-            background-color: rgb(141, 104, 167);
-            color:rgb(141, 104, 167);
+        .navigation-area a.active {
+            color: var(--highlight);
+            border-color: var(--bright);
+            background-color: var(--panel);
         }
 
-         .big-box {
-            background-color: rgb(200, 152, 234);
-            margin: 60px auto;
-            padding: 40px;
-            height: 85px;
-            width: 1100px;
-            border-radius: 15px;
-            text-align: center;
+        .page-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 36px 20px 60px;
+            flex: 1 0 auto;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--mid) 50%, var(--darker) 100%);
+            border: 3px solid var(--bright);
+            border-radius: 4px;
+            padding: 22px 36px;
+            margin-bottom: 28px;
+            display: flex;
             align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 5px 5px 0 var(--dark);
+            animation: fadeDown 0.5s ease both;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-banner h2 {
+            color: var(--highlight);
+            font-size: 14px;
+            text-shadow: 2px 2px 0 var(--dark);
+            line-height: 1.8;
+        }
+
+        .mc-panel {
+            background-color: var(--panel);
+            border: 3px solid var(--dark);
+            border-radius: 4px;
+            box-shadow: 5px 5px 0 var(--dark), inset 0 1px 0 rgba(255,255,255,0.06);
+            overflow: hidden;
+            animation: fadeUp 0.5s ease 0.1s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .mc-panel-header {
+            background: linear-gradient(90deg, var(--darker), var(--mid));
+            border-bottom: 3px solid var(--dark);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mc-panel-header .label {
+            font-size: 11px;
+            color: var(--bright);
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 0 var(--dark);
+        }
+
+        .mc-panel-body {
+            padding: 32px 36px;
             display: flex;
             flex-direction: column;
-        }
-
-        .big-box2 {
-            background-color: rgb(200, 152, 234);
-            margin: 60px auto;
-            padding: 40px;
-            height: 175px;
-            width: 1100px;
-            border-radius: 15px;
-            text-align: center;
             align-items: center;
-            display: flex;
-            flex-direction: column;
+            gap: 8px;
         }
 
-        .option-button { /* This will add decorations to the option buttons*/
-            font-family: 'Minecraft';
-            src: url(../assets/MinecraftFont.ttf) format('truetype');
-            color: rgb(200, 152, 234);
-            background-color: rgb(141, 104, 167);
-            padding: 10px 30px;
-            margin: 16px;
-            width: 200px;
-            height: 75px;
+        #question {
+            font-family: 'Minecraft', monospace;
+            font-size: 13px;
+            color: var(--highlight);
+            text-align: center;
+            text-shadow: 1px 1px 0 var(--dark);
+            margin-bottom: 20px;
+            line-height: 2;
+        }
+
+        #choices {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .option-button {
+            font-family: 'Minecraft', monospace;
+            font-size: 11px;
+            color: var(--highlight);
+            background-color: var(--darker);
+            border: 2px solid var(--mid);
+            border-bottom: 4px solid var(--dark);
+            padding: 12px 20px;
+            width: 220px;
+            min-height: 60px;
             cursor: pointer;
-            display: center;
-            border: none;
-            border-radius: 20px;
-
+            border-radius: 4px;
+            transition: all 0.15s;
+            text-shadow: 1px 1px 0 var(--dark);
+            line-height: 1.6;
         }
 
         .option-button:hover {
-            transform: scale(1.1);
+            background-color: var(--mid);
+            border-color: var(--bright);
+            color: var(--highlight);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
+        .option-button:active {
+            border-bottom: 2px solid var(--dark);
+            transform: translateY(2px);
+        }
 
-        </style>
+        #score {
+            font-family: 'Minecraft', monospace;
+            font-size: 13px;
+            color: var(--bright);
+            text-align: center;
+            text-shadow: 2px 2px 0 var(--dark);
+            margin-top: 12px;
+        }
 
-    <header>
-        <img src="../assets/minecraft.png" class="header-icon header-rightside" style="height: 60px;">
-        <h1 style="color:rgb(200, 152, 234)" > A Short Minecraft Quiz: Test what you've learned </h1>
-    </header>
+        #quizcontent h2 {
+            font-family: 'Minecraft', monospace;
+            font-size: 16px;
+            color: var(--highlight);
+            text-align: center;
+            text-shadow: 2px 2px 0 var(--dark);
+            line-height: 2;
+        }
 
-     <nav class="navigation-area">
-        <a href="../index.html">Homepage</a>
-        <a href="../public/Overworld.html">Overworld</a>
-        <a href="../public/Nether.html">Nether</a>
-        <a href="../public/End.html">End</a>
-        <a href="../public/History.html">Who created Minecraft?</a>
-        <a href="../public/Signup.html">Signup</a>
-        <a href="../public/Login.html">Login</a>
-        <a href="../public/Profile.html">Profile</a>
-    </nav>
+        footer {
+            background-color: var(--mid);
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0,0,0,0.06) 16px),
+                repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0,0,0,0.06) 16px);
+            background-size: 16px 16px;
+            border-top: 4px solid var(--dark);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 130px;
+            padding: 0 20px;
+            color: var(--muted);
+            font-size: 10px;
+            gap: 8px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        }
 
-    <body> 
+        footer h1 {
+            color: var(--bright);
+            font-size: 16px;
+        }
 
-        <div class="big-box">
+        footer a {
+            color: rgb(71, 106, 71);
+        }
+    </style>
+</head>
 
-            <h2> Welcome player! After reading some of this website's pages, test your knowledge by taking this short quiz and finding out how much you've learned! </h2>
+<header>
+    <img src="../assets/minecraft.png" class="header-icon" alt="logo">
+    <h1>A Short Minecraft Quiz: Test what you've learned</h1>
+</header>
 
+<nav class="navigation-area">
+    <a href="../index.html">Homepage</a>
+    <a href="../public/Overworld.html">Overworld</a>
+    <a href="../public/Nether.html">Nether</a>
+    <a href="../public/End.html">End</a>
+    <a href="../public/History.html">Who created Minecraft?</a>
+    <a href="../public/Signup.html">Signup</a>
+    <a href="../public/Login.html">Login</a>
+    <a href="../public/Profile.html">Profile</a>
+</nav>
+
+<body>
+<div class="page-wrapper">
+
+    <div class="welcome-banner">
+        <div>
+            <h2>Welcome, Player! After reading some of this website's pages, test your knowledge by taking this short quiz and finding out how much you've learned!</h2>
+        </div>
+    </div>
+
+    <div class="mc-panel">
+        <div class="mc-panel-header">
+            <span class="label">MINECRAFT QUIZ</span>
         </div>
 
-        <div class="big-box2">
-
+        <div class="mc-panel-body">
             <div id="quizcontent">
-
-                <p id="question"> </p>
-                <div id="choices"> </div>
-
+                <p id="question"></p>
+                <div id="choices"></div>
             </div>
-
-            <p id="score"> </p>
-
+            <p id="score"></p>
         </div>
-    
-    <script>
+    </div>
 
-        const quiz = [ // This will contain the quiz's questions, choices and answers.
-            {
-                question: "Out of all 3 dimensions in Minecraft, which is the only one that follows a day-night cycle?", // A question for the quiz.
-                choices: ["End", "Overworld", "Nether", "None of the Given"],  // The options the user can pick from.
-                answer: "Overworld" // The answer to the question.
-            },
+</div>
 
-            {
-                question: "Which of these structures CANNOT be found in the nether?",
-                choices: ["Bastion Remnant", "Fossil", "Ruined Portal", "Stronghold"],
-                answer: "Stronghold"
-            },
+<script>
+    const quiz = [
+        {
+            question: "Out of all 3 dimensions in Minecraft, which is the only one that follows a day-night cycle?",
+            choices: ["End", "Overworld", "Nether", "None of the Given"],
+            answer: "Overworld"
+        },
+        {
+            question: "Which of these structures CANNOT be found in the nether?",
+            choices: ["Bastion Remnant", "Fossil", "Ruined Portal", "Stronghold"],
+            answer: "Stronghold"
+        },
+        {
+            question: "Which mob can be found in a woodland mansion?",
+            choices: ["Vindicator", "Pillager", "Chillager", "Copper Golem"],
+            answer: "Vindicator"
+        },
+        {
+            question: "What is the only way to obtain an elytra in survival mode?",
+            choices: ["Finding it in a shipwreck", "Finding it in an end ship", "Defeating phantoms until it drops the elytra", "Finding it in a chest in a nether fortress"],
+            answer: "Finding it in an end ship"
+        },
+        {
+            question: "When preparing for the ender dragon fight, which of these items is not essential?",
+            choices: ["Weapons", "Water Bucket", "Iron Blocks", "Bow and Arrow"],
+            answer: "Iron Blocks"
+        },
+        {
+            question: "Which of these mobs can be found in the skies?",
+            choices: ["Phantom", "Strider", "Drowned", "Iron Golem"],
+            answer: "Phantom"
+        },
+        {
+            question: "Which mob inhabits and guards the end city buildings?",
+            choices: ["Endermite", "Enderman", "Ender Warden", "Shulker"],
+            answer: "Shulker"
+        },
+        {
+            question: "Which nether biome can magma cubes spawn a lot?",
+            choices: ["Warped Forest", "Crimson Delta", "Basalt Delta", "Nether Waste"],
+            answer: "Basalt Delta"
+        },
+        {
+            question: "Which structure does not contain any loot chests?",
+            choices: ["Village", "Fossil", "Desert Temple", "Bastion Remnant"],
+            answer: "Fossil"
+        },
+        {
+            question: "Which end biome can contain end cities and large amounts of chorus trees?",
+            choices: ["Main End Island", "End Midlands", "End Barrens", "End Highlands"],
+            answer: "End Highlands"
+        },
+        {
+            question: "Which of these structures feature a hidden trap meant to damage the player?",
+            choices: ["End City", "Ruined Portal", "Desert Temple", "End Fortres"],
+            answer: "Desert Temple"
+        },
+        {
+            question: "Who is the original creator of Minecraft?",
+            choices: ["Jens Bergesten", "Cali Maki", "Notch Persson", "Mojang"],
+            answer: "Notch Persson"
+        },
+        {
+            question: "The only way to access the end dimension is by finding a portal hidden inside a nether fortress",
+            choices: ["True", "False"],
+            answer: "False"
+        },
+        {
+            question: "There are currently 4 dimensions in Minecraft",
+            choices: ["True", "False"],
+            answer: "False"
+        },
+        {
+            question: "Soul sand will increase your walkspeed",
+            choices: ["True", "False"],
+            answer: "False"
+        },
+        {
+            question: "This nether biome is characterized by blue/cyan plants and terrain",
+            choices: ["Cyan Landscape", "Warped Forest", "Midnight Forest", "Blue Forest"],
+            answer: "Warped Forest"
+        },
+        {
+            question: "This overworld structure is found in jungles and contains a secret chest room with traps",
+            choices: ["Ruined Portal", "Jungle Temple", "Jungle Village", "Ancient City"],
+            answer: "Jungle Temple"
+        },
+        {
+            question: "The ocean monument is filled with what kind of mobs?",
+            choices: ["Slimes", "Guardians", "Skeletons", "Golems"],
+            answer: "Guardians"
+        },
+    ];
 
-            {
-                question: "Which mob can be found in a woodland mansion?",
-                choices: ["Vindicator", "Pillager", "Chillager", "Copper Golem"],
-                answer: "Vindicator"
-            },
+    let Score = 0;
+    let CurrentQuestion = 0;
 
-            {
-                question: "What is the only way to obtain an elytra in survival mode?",
-                choices: ["Finding it in a shipwreck", "Finding it in an end ship", "Defeating phantoms until it drops the elytra", "Finding it in a chest in a nether fortress"],
-                answer: "Finding it in an end ship"
-            },
+    const QuestionText = document.getElementById("question");
+    const QuizChoices = document.getElementById("choices");
+    const YourScore = document.getElementById("score");
 
-            {
-                question: "When preparing for the ender dragon fight, which of these items is not essential?",
-                choices: ["Weapons", "Water Bucket", "Iron Blocks", "Bow and Arrow"],
-                answer: "Iron Blocks"
-            },
+    function NewQuestion() {
+        const CurrentQuizQuestion = quiz[CurrentQuestion];
+        QuestionText.textContent = CurrentQuizQuestion.question;
+        QuizChoices.innerHTML = "";
+        CurrentQuizQuestion.choices.forEach(option => {
+            const button = document.createElement("button");
+            button.onclick = () => SelectAnOption(option);
+            button.textContent = option;
+            button.classList.add("option-button");
+            QuizChoices.appendChild(button);
+        });
+    }
 
-            {
-                question: "Which of these mobs can be found in the skies?",
-                choices: ["Phantom", "Strider", "Drowned", "Iron Golem"],
-                answer: "Phantom"
-            },
-
-             {
-                question: "Which mob inhabits and guards the end city buildings?",
-                choices: ["Endermite", "Enderman", "Ender Warden", "Shulker"],
-                answer: "Shulker"
-            },
-
-            {
-                question: "Which nether biome can magma cubes spawn a lot?",
-                choices: ["Warped Forest", "Crimson Delta", "Basalt Delta", "Nether Waste"],
-                answer: "Basalt Delta"
-            },
-
-            {
-                question: "Which structure does not contain any loot chests?",
-                choices: ["Village", "Fossil", "Desert Temple", "Bastion Remnant"],
-                answer: "Fossil"
-            },
-
-            {
-                question: "Which end biome can contain end cities and large amounts of chorus trees?",
-                choices: ["Main End Island", "End Midlands", "End Barrens", "End Highlands"],
-                answer: "End Highlands"
-            },
-
-            {
-                question: "Which of these structures feature a hidden trap meant to damage the player?",
-                choices: ["End City", "Ruined Portal", "Desert Temple", "End Fortres"],
-                answer: "Desert Temple"
-            },
-
-            {
-                question: "Who is the original creator of Minecraft?",
-                choices: ["Jens Bergesten", "Cali Maki", "Notch Persson", "Mojang"],
-                answer: "Notch Persson"
-            },
-
-            {
-                question: "The only way to access the end dimension is by finding a portal hidden inside a nether fortress",
-                choices: ["True", "False"],
-                answer: "False"
-            },
-
-            {
-                question: "There are currently 4 dimensions in Minecraft",
-                choices: ["True", "False"],
-                answer: "False"
-            },
-
-            {
-                question: "Soul sand will increase your walkspeed",
-                choices: ["True", "False"],
-                answer: "False"
-            },
-
-             {
-                question: "This nether biome is characterized by blue/cyan plants and terrain",
-                choices: ["Cyan Landscape", "Warped Forest", "Midnight Forest", "Blue Forest"],
-                answer: "Warped Forest"
-            },
-
-            {
-                question: "This overworld structure is found in jungles and contains a secret chest room with traps",
-                choices: ["Ruined Portal", "Jungle Temple", "Jungle Village", "Ancient City"],
-                answer: "Jungle Temple"
-            },
-
-            {
-                question: "The ocean monument is filled with what kind of mobs?",
-                choices: ["Slimes", "Guardians", "Skeletons", "Golems"],
-                answer: "Guardians"
-            },
-
-        ];
-
-        let Score = 0; // This will count the user's current score.
-        let CurrentQuestion = 0; // This will keep track on which question the user is at.
-
-        const QuestionText = document.getElementById("question");
-        const QuizChoices = document.getElementById("choices");
-        const YourScore = document.getElementById("score");
-
-        function NewQuestion() { // This will load a new question.
-            const CurrentQuizQuestion = quiz[CurrentQuestion];
-            QuestionText.textContent = CurrentQuizQuestion.question; // This will display the text on the website.
-            QuizChoices.innerHTML = ""; // This will clear the previous answer choices.
-            CurrentQuizQuestion.choices.forEach(option => {
-                const button = document.createElement("button"); // This will create clickable buttons for the quiz's options.
-                button.onclick = () => SelectAnOption(option);
-                button.textContent = option;
-                button.classList.add("option-button");
-                QuizChoices.appendChild(button);
-            }
-        );
+    function SelectAnOption(selected) {
+        const CorrectAnswer = quiz[CurrentQuestion].answer;
+        if (selected == CorrectAnswer) {
+            Score++;
         }
-
-        function SelectAnOption(selected) { // If the user selects an option, this function will run.
-            const CorrectAnswer = quiz[CurrentQuestion].answer;
-            if (selected == CorrectAnswer) {
-                Score++;
-            }
-
-        CurrentQuestion++ // This allows the website to show the next question.
-
-        if (CurrentQuestion < quiz.length) { // This will check if there's still available questions. If there's no more questions, the website will show the user's final score.
+        CurrentQuestion++;
+        if (CurrentQuestion < quiz.length) {
             NewQuestion();
         } else {
-           ShowScore();
+            ShowScore();
         }
+    }
 
-        }
+    function ShowScore() {
+        document.getElementById("quizcontent").innerHTML = `<h2>Congratulations! You got a score of ${Score} out of ${quiz.length}</h2>`;
+    }
 
-        function ShowScore() { // This will show the user's score after they are done with the quiz.
-            quizcontent.innerHTML = `<h2> Congratulations! You got a score of ${Score} out of ${quiz.length} </h2>`;
-        }
+    NewQuestion();
+</script>
 
-        NewQuestion();
+</body>
 
+<footer>
+    <h1>About Us</h1>
+    <p>© Jin Bucud and Caine Salcedo 2025</p>
+    <p>Source for information: Minecraft Wiki. (n.d.). Minecraft Wiki.
+        <a href="https://minecraft.wiki/" target="_blank">Minecraft Wiki. (n.d.). Minecraft Wiki.</a>
+    </p>
+</footer>
 
-
-    </script>
-
-    </body>
-
-    <footer>
-
-        <h1 style="color:rgb(200, 152, 234)" > About Us </h1>
-        <p> © Jin Bucud and Caine Salcedo 2025 </p> 
-        <p> Source for information: Minecraft Wiki. (n.d.). Minecraft Wiki.
-            <a style="color: rgb(200, 152, 234)"; href="https://minecraft.wiki/" target="_blank"> Minecraft Wiki. (n.d.). Minecraft Wiki. </a>
-            </p>
-
-
-    </footer>
+</html>

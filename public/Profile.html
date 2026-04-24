@@ -627,15 +627,25 @@
   function loadUser() {
     try {
       const raw = localStorage.getItem('minecraftUser');
-      if (raw) { const d = JSON.parse(raw); mockUser = { name: d.name||mockUser.name, email: d.email||mockUser.email, password: d.password||mockUser.password }; }
-    } catch(e) {}
-    document.getElementById('previewName').textContent = mockUser.name;
-    document.getElementById('previewEmail').textContent = mockUser.email;
-    document.getElementById('newName').value = mockUser.name;
-    document.getElementById('newEmail').value = mockUser.email;
+      if (raw) { const d = JSON.parse(raw); 
+        mockUser = { 
+            name: d.name||mockUser.name,
+             email: d.email||mockUser.email,
+              password: d.password||mockUser.password
+             };
+             }
+    } catch(e) {
+        console.error("Error loading user: ", e);
+    }
+    const previewName = document.getElementById('previewName');
+    const previewEmail = document.getElementById('previewEmail');
+    if(previewName) previewName.textContent = mockUser.name;
+    if(previewEmail) previewEmail.textContent = mockUser.email;
   }
 
   function openEdit(type) {
+    loadUser();
+    
     document.getElementById('viewPanel').style.display = 'none';
     document.getElementById('editInfoPanel').style.display = type === 'info' ? 'block' : 'none';
     document.getElementById('editPwPanel').style.display = type === 'pw' ? 'block' : 'none';

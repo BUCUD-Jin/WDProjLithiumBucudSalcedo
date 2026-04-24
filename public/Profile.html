@@ -645,7 +645,7 @@
 
   function openEdit(type) {
     loadUser();
-    
+
     document.getElementById('viewPanel').style.display = 'none';
     document.getElementById('editInfoPanel').style.display = type === 'info' ? 'block' : 'none';
     document.getElementById('editPwPanel').style.display = type === 'pw' ? 'block' : 'none';
@@ -707,11 +707,14 @@
   function saveInfo() {
     const name = document.getElementById('newName').value.trim();
     const email = document.getElementById('newEmail').value.trim();
-    const pw = document.getElementById('confirmPwInfo').value;
+    const pwInput = document.getElementById('confirmPwInfo').value;
+    const currentUserData = JSON.parse(localStorage.getItem('minecraftUser')) || mockUser;
     if (!name) { showMsg('infoMsg','Username cannot be empty!','error'); return; }
     if (!email || !email.includes('@')) { showMsg('infoMsg','Enter a valid email address!','error'); return; }
-    if (pw !== mockUser.password) { showMsg('infoMsg','Incorrect current password!','error'); return; }
-    mockUser.name = name; mockUser.email = email;
+    if (pwInput !== mockUser.password) { showMsg('infoMsg','Incorrect current password!','error'); return; }
+    mockUser.name = name; 
+    mockUser.email = email;
+    mockUser.password = currentUserData.password;
     saveUser();
     showMsg('infoMsg','Profile updated successfully!','success');
     document.getElementById('newName').value = name;
@@ -723,10 +726,13 @@
     const cur = document.getElementById('currentPw').value;
     const nw = document.getElementById('newPw').value;
     const cnf = document.getElementById('confirmNewPw').value;
+    const currentUserData = JSON.parse(localStorage.getItem('minecraftUser')) || mockUser;
     if (cur !== mockUser.password) { showMsg('pwMsg','Incorrect current password!','error'); return; }
     if (nw.length < 6) { showMsg('pwMsg','New password must be at least 6 characters!','error'); return; }
     if (nw !== cnf) { showMsg('pwMsg','New passwords do not match!','error'); return; }
     mockUser.password = nw;
+    mockUser.name = currentUserData.name;
+    mockUser.email = currentUserData.email;
     saveUser();
     showMsg('pwMsg','Password changed successfully!','success');
     setTimeout(() => { closeEdit(); }, 1200);

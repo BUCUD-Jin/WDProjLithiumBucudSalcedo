@@ -464,7 +464,266 @@
             .profile-grid { grid-template-columns: 1fr; }
             .interests-grid { grid-template-columns: repeat(2, 1fr); }
         }
-    </style>
+    
+  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+  :root {
+    --dark: rgb(30,47,30); --darker: rgb(20,32,20); --mid: rgb(59,91,59);
+    --panel: rgb(72,111,72); --light: rgb(98,150,98); --bright: rgb(120,182,120);
+    --highlight: rgb(160,220,160); --muted: rgb(101,148,101); --text-dark: rgb(59,91,59);
+    --red-bg: rgb(120,40,40); --red-border: rgb(80,20,20); --red-text: rgb(255,160,160);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'VT323', monospace; background: transparent; color: var(--bright); }
+
+  .mc-panel { background: var(--panel); border: 3px solid var(--dark); border-radius: 4px; box-shadow: 5px 5px 0 var(--dark); overflow: hidden; margin-bottom: 16px; }
+  .mc-panel-header { background: linear-gradient(90deg, var(--darker), var(--mid)); border-bottom: 3px solid var(--dark); padding: 10px 18px; display: flex; align-items: center; gap: 10px; }
+  .mc-panel-header .label { font-size: 14px; color: var(--bright); letter-spacing: 1px; }
+  .mc-panel-body { padding: 20px; }
+
+  .edit-btn {
+    width: 100%; background: linear-gradient(180deg, var(--mid) 0%, var(--darker) 100%);
+    border: 2px solid var(--dark); border-bottom: 4px solid var(--dark);
+    color: var(--highlight); font-family: 'VT323', monospace; font-size: 15px;
+    padding: 12px; cursor: pointer; letter-spacing: 1px; transition: all 0.1s; margin-bottom: 8px;
+  }
+  .edit-btn:hover { filter: brightness(1.25); }
+  .edit-btn:active { border-bottom: 2px solid var(--dark); transform: translateY(2px); }
+
+  .field-group { margin-bottom: 16px; }
+  .field-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; margin-bottom: 5px; display: block; }
+  .mc-input {
+    width: 100%; background: var(--darker); border: 2px solid var(--mid);
+    border-bottom: 3px solid var(--dark); color: var(--highlight);
+    font-family: 'VT323', monospace; font-size: 15px; padding: 8px 12px;
+    outline: none; transition: border-color 0.15s;
+  }
+  .mc-input:focus { border-color: var(--bright); }
+  .mc-input::placeholder { color: var(--muted); opacity: 0.6; }
+
+  .password-wrapper { position: relative; }
+  .toggle-pw {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    font-family: 'VT323', monospace; font-size: 13px; padding: 0;
+  }
+  .toggle-pw:hover { color: var(--bright); }
+
+  .save-btn {
+    width: 100%; background: linear-gradient(180deg, var(--light) 0%, var(--mid) 100%);
+    border: 2px solid var(--dark); border-bottom: 4px solid var(--dark);
+    color: var(--text-dark); font-family: 'VT323', monospace; font-size: 15px;
+    padding: 12px; cursor: pointer; letter-spacing: 1px; transition: all 0.1s; margin-bottom: 8px;
+  }
+  .save-btn:hover { filter: brightness(1.15); }
+  .save-btn:active { border-bottom: 2px solid var(--dark); transform: translateY(2px); }
+
+  .cancel-btn {
+    width: 100%; background: transparent;
+    border: 2px solid var(--mid); border-bottom: 3px solid var(--dark);
+    color: var(--muted); font-family: 'VT323', monospace; font-size: 13px;
+    padding: 10px; cursor: pointer; letter-spacing: 1px; transition: all 0.1s;
+  }
+  .cancel-btn:hover { color: var(--bright); border-color: var(--bright); }
+
+  .msg { font-size: 13px; padding: 8px 12px; margin-bottom: 12px; border: 2px solid; border-left: 4px solid; }
+  .msg.success { background: rgba(60,120,60,0.25); border-color: var(--bright); color: var(--highlight); }
+  .msg.error { background: rgba(120,40,40,0.25); border-color: var(--red-text); color: var(--red-text); }
+
+  .pw-strength { height: 6px; background: var(--darker); border: 1px solid var(--dark); margin-top: 5px; }
+  .pw-strength-fill { height: 100%; transition: width 0.3s, background 0.3s; width: 0%; }
+
+  .divider { border: none; border-top: 2px solid var(--mid); margin: 14px 0; }
+
+  .info-preview { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .info-preview span { color: var(--highlight); }
+
+  .section-title { font-size: 12px; color: var(--muted); letter-spacing: 2px; margin-bottom: 12px; }
+</style>
+
+<div style="max-width:500px; margin:0 auto; padding: 16px;">
+
+  <div class="mc-panel" id="viewPanel">
+    <div class="mc-panel-header">
+      <span style="font-size:16px;">✎</span>
+      <span class="label">ACCOUNT SETTINGS</span>
+    </div>
+    <div class="mc-panel-body">
+      <p class="info-preview">Username: <span id="previewName">Steve</span></p>
+      <p class="info-preview">Email: <span id="previewEmail">steve@minecraft.net</span></p>
+      <hr class="divider">
+      <button class="edit-btn" onclick="openEdit('info')">[ EDIT USERNAME &amp; EMAIL ]</button>
+      <button class="edit-btn" onclick="openEdit('pw')">[ CHANGE PASSWORD ]</button>
+    </div>
+  </div>
+
+  <div class="mc-panel" id="editInfoPanel" style="display:none;">
+    <div class="mc-panel-header">
+      <span style="font-size:16px;">🧍</span>
+      <span class="label">EDIT USERNAME &amp; EMAIL</span>
+    </div>
+    <div class="mc-panel-body">
+      <div id="infoMsg"></div>
+      <div class="field-group">
+        <label class="field-label">NEW USERNAME</label>
+        <input class="mc-input" type="text" id="newName" placeholder="Enter new username">
+      </div>
+      <div class="field-group">
+        <label class="field-label">NEW EMAIL</label>
+        <input class="mc-input" type="email" id="newEmail" placeholder="Enter new email">
+      </div>
+      <hr class="divider">
+      <div class="field-group">
+        <label class="field-label">CONFIRM CURRENT PASSWORD</label>
+        <div class="password-wrapper">
+          <input class="mc-input" type="password" id="confirmPwInfo" placeholder="Required to save changes" style="padding-right:70px;">
+          <button class="toggle-pw" onclick="toggleVis('confirmPwInfo', this)">SHOW</button>
+        </div>
+      </div>
+      <button class="save-btn" onclick="saveInfo()">[ SAVE CHANGES ]</button>
+      <button class="cancel-btn" onclick="closeEdit()">[ CANCEL ]</button>
+    </div>
+  </div>
+
+  <div class="mc-panel" id="editPwPanel" style="display:none;">
+    <div class="mc-panel-header">
+      <span style="font-size:16px;">🔑</span>
+      <span class="label">CHANGE PASSWORD</span>
+    </div>
+    <div class="mc-panel-body">
+      <div id="pwMsg"></div>
+      <div class="field-group">
+        <label class="field-label">CURRENT PASSWORD</label>
+        <div class="password-wrapper">
+          <input class="mc-input" type="password" id="currentPw" placeholder="Enter current password" style="padding-right:70px;">
+          <button class="toggle-pw" onclick="toggleVis('currentPw', this)">SHOW</button>
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">NEW PASSWORD</label>
+        <div class="password-wrapper">
+          <input class="mc-input" type="password" id="newPw" placeholder="Enter new password" style="padding-right:70px;" oninput="updateStrength(this.value)">
+          <button class="toggle-pw" onclick="toggleVis('newPw', this)">SHOW</button>
+        </div>
+        <div class="pw-strength"><div class="pw-strength-fill" id="strengthFill"></div></div>
+        <div style="font-size:12px; color:var(--muted); margin-top:4px;" id="strengthLabel"></div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">CONFIRM NEW PASSWORD</label>
+        <div class="password-wrapper">
+          <input class="mc-input" type="password" id="confirmNewPw" placeholder="Re-enter new password" style="padding-right:70px;">
+          <button class="toggle-pw" onclick="toggleVis('confirmNewPw', this)">SHOW</button>
+        </div>
+      </div>
+      <button class="save-btn" onclick="savePw()">[ SAVE PASSWORD ]</button>
+      <button class="cancel-btn" onclick="closeEdit()">[ CANCEL ]</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let mockUser = { name: 'Steve', email: 'steve@minecraft.net', password: 'diamond123' };
+
+  function loadUser() {
+    try {
+      const raw = localStorage.getItem('minecraftUser');
+      if (raw) { const d = JSON.parse(raw); mockUser = { name: d.name||mockUser.name, email: d.email||mockUser.email, password: d.password||mockUser.password }; }
+    } catch(e) {}
+    document.getElementById('previewName').textContent = mockUser.name;
+    document.getElementById('previewEmail').textContent = mockUser.email;
+    document.getElementById('newName').value = mockUser.name;
+    document.getElementById('newEmail').value = mockUser.email;
+  }
+
+  function openEdit(type) {
+    document.getElementById('viewPanel').style.display = 'none';
+    document.getElementById('editInfoPanel').style.display = type === 'info' ? 'block' : 'none';
+    document.getElementById('editPwPanel').style.display = type === 'pw' ? 'block' : 'none';
+    document.getElementById('infoMsg').innerHTML = '';
+    document.getElementById('pwMsg').innerHTML = '';
+    ['confirmPwInfo','currentPw','newPw','confirmNewPw'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+    updateStrength('');
+  }
+
+  function closeEdit() {
+    document.getElementById('viewPanel').style.display = 'block';
+    document.getElementById('editInfoPanel').style.display = 'none';
+    document.getElementById('editPwPanel').style.display = 'none';
+  }
+
+  function showMsg(id, text, type) {
+    document.getElementById(id).innerHTML = '<div class="msg ' + type + '">' + text + '</div>';
+  }
+
+  function toggleVis(id, btn) {
+    const el = document.getElementById(id);
+    const hidden = el.type === 'password';
+    el.type = hidden ? 'text' : 'password';
+    btn.textContent = hidden ? 'HIDE' : 'SHOW';
+  }
+
+  function updateStrength(pw) {
+    const fill = document.getElementById('strengthFill');
+    const label = document.getElementById('strengthLabel');
+    if (!pw) { fill.style.width='0%'; label.textContent=''; return; }
+    let score = 0;
+    if (pw.length >= 8) score++;
+    if (/[A-Z]/.test(pw)) score++;
+    if (/[0-9]/.test(pw)) score++;
+    if (/[^A-Za-z0-9]/.test(pw)) score++;
+    const levels = [
+      {w:'15%', c:'#c05000', t:'WEAK'},
+      {w:'35%', c:'#c05000', t:'WEAK'},
+      {w:'55%', c:'#b08000', t:'FAIR'},
+      {w:'80%', c:'#3a8a3a', t:'STRONG'},
+      {w:'100%', c:'#7dc95a', t:'VERY STRONG'}
+    ];
+    const l = levels[score];
+    fill.style.width = l.w; fill.style.background = l.c;
+    label.textContent = l.t; label.style.color = l.c;
+  }
+
+  function saveUser() {
+    try {
+      const raw = localStorage.getItem('minecraftUser');
+      const existing = raw ? JSON.parse(raw) : {};
+      const updated = Object.assign(existing, { name: mockUser.name, email: mockUser.email, password: mockUser.password });
+      localStorage.setItem('minecraftUser', JSON.stringify(updated));
+    } catch(e) {}
+    document.getElementById('previewName').textContent = mockUser.name;
+    document.getElementById('previewEmail').textContent = mockUser.email;
+  }
+
+  function saveInfo() {
+    const name = document.getElementById('newName').value.trim();
+    const email = document.getElementById('newEmail').value.trim();
+    const pw = document.getElementById('confirmPwInfo').value;
+    if (!name) { showMsg('infoMsg','Username cannot be empty!','error'); return; }
+    if (!email || !email.includes('@')) { showMsg('infoMsg','Enter a valid email address!','error'); return; }
+    if (pw !== mockUser.password) { showMsg('infoMsg','Incorrect current password!','error'); return; }
+    mockUser.name = name; mockUser.email = email;
+    saveUser();
+    showMsg('infoMsg','Profile updated successfully!','success');
+    document.getElementById('newName').value = name;
+    document.getElementById('newEmail').value = email;
+    setTimeout(() => { closeEdit(); }, 1200);
+  }
+
+  function savePw() {
+    const cur = document.getElementById('currentPw').value;
+    const nw = document.getElementById('newPw').value;
+    const cnf = document.getElementById('confirmNewPw').value;
+    if (cur !== mockUser.password) { showMsg('pwMsg','Incorrect current password!','error'); return; }
+    if (nw.length < 6) { showMsg('pwMsg','New password must be at least 6 characters!','error'); return; }
+    if (nw !== cnf) { showMsg('pwMsg','New passwords do not match!','error'); return; }
+    mockUser.password = nw;
+    saveUser();
+    showMsg('pwMsg','Password changed successfully!','success');
+    setTimeout(() => { closeEdit(); }, 1200);
+  }
+
+  loadUser();
+</script>
 </head>
 
 <header>

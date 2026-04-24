@@ -711,7 +711,7 @@
     const currentUserData = JSON.parse(localStorage.getItem('minecraftUser')) || mockUser;
     if (!name) { showMsg('infoMsg','Username cannot be empty!','error'); return; }
     if (!email || !email.includes('@')) { showMsg('infoMsg','Enter a valid email address!','error'); return; }
-    if (pwInput !== mockUser.password) { showMsg('infoMsg','Incorrect current password!','error'); return; }
+    if (pwInput !== currentUserData.password) { showMsg('infoMsg','Incorrect current password!','error'); return; }
     mockUser.name = name; 
     mockUser.email = email;
     mockUser.password = currentUserData.password;
@@ -727,7 +727,7 @@
     const nw = document.getElementById('newPw').value;
     const cnf = document.getElementById('confirmNewPw').value;
     const currentUserData = JSON.parse(localStorage.getItem('minecraftUser')) || mockUser;
-    if (cur !== mockUser.password) { showMsg('pwMsg','Incorrect current password!','error'); return; }
+    if (cur !== currentUserData.password) { showMsg('pwMsg','Incorrect current password!','error'); return; }
     if (nw.length < 6) { showMsg('pwMsg','New password must be at least 6 characters!','error'); return; }
     if (nw !== cnf) { showMsg('pwMsg','New passwords do not match!','error'); return; }
     mockUser.password = nw;
